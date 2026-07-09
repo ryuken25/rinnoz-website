@@ -4,6 +4,7 @@ import { ArtworkBrowse, filterArtworks } from './ArtworkBrowse';
 import { ArtworkLightbox } from './ArtworkLightbox';
 import { ArtworkStory } from './ArtworkStory';
 import { SectionShell } from './SectionShell';
+import { BrandIcon } from './BrandIcon';
 import { carrdFallbackArtworks, type ArtworkFilter, type SocialArtwork } from '@/content/artworks';
 import { socialArtworks } from '@/content/socialArtworks';
 import { discordUrl, instagramUrl, xUrl } from '@/content/socials';
@@ -24,7 +25,7 @@ export function ArtworkGallery() {
     </div>
     <ArtworkStory items={allItems.filter((item) => item.source !== 'carrd-fallback')} onSelect={setSelectedId} />
     <ArtworkBrowse items={allItems} filter={filter} setFilter={setFilter} onSelect={setSelectedId} />
-    <div className="mt-8 flex flex-wrap gap-3"><a className="btn btn-primary" href={instagramUrl} target="_blank" rel="noreferrer">See more on Instagram</a><a className="btn btn-ghost" href={xUrl} target="_blank" rel="noreferrer">See more on X</a><a className="btn btn-ghost" href="#order">Order commission</a><a className="btn btn-ghost" href={discordUrl} target="_blank" rel="noreferrer">Join Discord</a></div>
+    <div className="mt-8 flex flex-wrap gap-3"><a className="btn btn-primary" href={instagramUrl} target="_blank" rel="noreferrer" aria-label="See more on Instagram"><BrandIcon name="instagram"/><span>Instagram</span></a><a className="btn btn-ghost" href={xUrl} target="_blank" rel="noreferrer" aria-label="See more on X"><BrandIcon name="x"/><span>X</span></a><a className="btn btn-ghost" href="#order" aria-label="Order commission"><BrandIcon name="order"/><span>Order</span></a><a className="btn btn-ghost" href={discordUrl} target="_blank" rel="noreferrer" aria-label="Join Discord"><BrandIcon name="discord"/><span>Discord</span></a></div>
     {selectedId && <ArtworkLightbox items={visibleItems.length ? visibleItems : allItems} selectedId={selectedId} onClose={() => setSelectedId(null)} onSelect={setSelectedId} />}
   </SectionShell>;
 }
