@@ -39,6 +39,12 @@ function navPx() {
   return Number.isFinite(n) ? n : 76;
 }
 
+function storyTopGapPx() {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue('--story-top-gap') || '16';
+  const n = Number.parseFloat(raw);
+  return Number.isFinite(n) ? n : 16;
+}
+
 function ArtworkStoryDesktop({
   chapters,
   onSelect,
@@ -66,7 +72,8 @@ function ArtworkStoryDesktop({
       ? 'text-[clamp(1.85rem,2.45vw,3.05rem)] leading-[1.04]'
       : 'text-[clamp(2rem,2.65vw,3.35rem)] leading-[1.02]';
 
-  const minHeightSvh = Math.max(420, chapters.length * 88);
+  // Keep pin travel compact — avoid giant blank after last chapter.
+  const minHeightSvh = Math.max(400, chapters.length * 84);
 
   useGSAP(
     () => {
@@ -74,30 +81,30 @@ function ArtworkStoryDesktop({
       const cards = cardsRef.current.filter(Boolean);
       if (!cards.length) return;
 
-      // kill previous story triggers
       ScrollTrigger.getAll()
         .filter((tr) => tr.vars.id === 'artworks-story')
         .forEach((tr) => tr.kill());
 
       gsap.set(cards, {
         autoAlpha: 0,
-        yPercent: 12,
-        xPercent: 4,
-        scale: 0.92,
-        rotate: 2,
-        filter: 'blur(0px)',
+        yPercent: 10,
+        xPercent: 3,
+        scale: 0.94,
+        rotate: 1.5,
+        filter: 'none',
         transformOrigin: '50% 50%',
       });
-      gsap.set(cards[0], { autoAlpha: 1, yPercent: 0, xPercent: 0, scale: 1, rotate: -1 });
+      gsap.set(cards[0], { autoAlpha: 1, yPercent: 0, xPercent: 0, scale: 1, rotate: -0.8 });
       gsap.set(progressRef.current, { scaleX: 0, transformOrigin: '0% 50%' });
 
-      const chapterTravel = Math.min(window.innerHeight * 0.72, 620);
+      const chapterTravel = Math.min(window.innerHeight * 0.68, 560);
 
       const tl = gsap.timeline({
         scrollTrigger: {
           id: 'artworks-story',
           trigger: rangeRef.current,
-          start: () => `top top+=${navPx() + 28}`,
+          // Pin flush under navbar + small top gap (not +28/+48 which sits too low).
+          start: () => `top top+=${navPx() + storyTopGapPx()}`,
           end: () => `+=${Math.max(chapterTravel * Math.max(1, chapters.length - 1), chapterTravel)}`,
           scrub: 0.65,
           pin: stageRef.current,
@@ -111,7 +118,6 @@ function ArtworkStoryDesktop({
             gsap.set(progressRef.current, { scaleX: self.progress });
           },
           onRefresh: (self) => {
-            // ensure first chapter when just entering stage
             if (self.progress < 0.02) setActiveIndex(0);
           },
         },
@@ -122,12 +128,12 @@ function ArtworkStoryDesktop({
       cards.forEach((card, index) => {
         if (index === 0) return;
         tl.to(cards[index - 1], {
-          autoAlpha: 0.08,
-          yPercent: -8,
-          xPercent: -6,
-          scale: 0.9,
-          rotate: -4,
-          duration: 0.4,
+          autoAlpha: 0.12,
+          yPercent: -6,
+          xPercent: -4,
+          scale: 0.92,
+          rotate: -3,
+          duration: 0.38,
           ease: 'power2.out',
         });
         tl.to(
@@ -137,15 +143,15 @@ function ArtworkStoryDesktop({
             yPercent: 0,
             xPercent: 0,
             scale: 1,
-            rotate: index % 2 ? 1 : -1,
-            duration: 0.48,
+            rotate: index % 2 ? 0.8 : -0.8,
+            duration: 0.46,
             ease: 'power2.out',
           },
-          '<0.06',
+          '<0.05',
         );
       });
 
-      const refresh = window.setTimeout(() => ScrollTrigger.refresh(), 400);
+      const refresh = window.setTimeout(() => ScrollTrigger.refresh(), 350);
       return () => window.clearTimeout(refresh);
     },
     { scope: rootRef, dependencies: [chapters.length, locale], revertOnUpdate: true },
@@ -177,38 +183,40 @@ function ArtworkStoryDesktop({
       <div
         ref={rangeRef}
         id="artworks-story-stage"
-        className="relative isolate scroll-mt-[calc(var(--nav-height)+56px)]"
+        className="relative isolate scroll-mt-[calc(var(--nav-height)+16px)]"
         style={{ minHeight: `${minHeightSvh}svh` }}
         aria-labelledby="artworks-story-title"
       >
+        {/* decorative only — no layout push */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(255,158,216,.14),transparent_28%),radial-gradient(circle_at_20%_70%,rgba(216,198,255,.12),transparent_34%)]" />
+        </div>
+
+        {/* Center in remaining viewport under navbar via flex items-center — no large pt/mt */}
         <div
           ref={stageRef}
-          className="sticky top-[calc(var(--nav-height)+28px)] flex min-h-[calc(100svh-var(--nav-height)-56px)] items-center py-3"
+          className="story-sticky sticky flex items-center overflow-visible py-0"
         >
-          <div className="pointer-events-none absolute inset-0 overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(255,158,216,.14),transparent_28%),radial-gradient(circle_at_20%_70%,rgba(216,198,255,.12),transparent_34%)]" />
-          </div>
-
-          <div className="relative z-10 mx-auto grid w-full max-w-[1180px] grid-cols-[0.84fr_1.16fr] items-center gap-[clamp(1.25rem,2.4vw,2.5rem)] px-[clamp(1rem,2.5vw,2.5rem)]">
-            <aside className="story-panel max-h-[calc(100svh-var(--nav-height)-76px)] overflow-hidden rounded-[1.75rem] border border-white/12 bg-ink/70 p-[clamp(1rem,1.55vw,1.45rem)] shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_20px_60px_rgba(0,0,0,.28)] backdrop-blur-2xl">
+          <div className="mx-auto grid w-full max-w-[1180px] grid-cols-[0.84fr_1.16fr] items-center gap-[clamp(1.25rem,2.4vw,2.5rem)] px-[clamp(1rem,2.5vw,2.5rem)]">
+            <aside className="story-panel story-panel-frame flex max-h-[min(76svh,680px)] flex-col overflow-hidden rounded-[1.75rem] border border-white/12 bg-ink/70 p-[clamp(1rem,1.55vw,1.45rem)] shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_20px_60px_rgba(0,0,0,.28)] backdrop-blur-2xl">
               <p className="text-[0.72rem] font-black uppercase tracking-[0.14em] text-blush">{storyEyebrow}</p>
-              <motion.div key={`${active.id}-${meta.kicker}`} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22 }}>
-                <p className="mt-3 text-[0.72rem] font-black uppercase tracking-[0.12em] text-blush">{meta.kicker}</p>
+              <motion.div key={`${active.id}-${meta.kicker}`} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} className="min-h-0 flex-1">
+                <p className="mt-2.5 text-[0.72rem] font-black uppercase tracking-[0.12em] text-blush">{meta.kicker}</p>
                 <h3 className={`story-title mt-2 font-display tracking-[-.04em] ${titleClass}`}>{meta.title}</h3>
-                <p className="story-body mt-3 text-[clamp(.86rem,.88vw,.98rem)] leading-[1.55] text-cream/68">{meta.body}</p>
-                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                <p className="story-body mt-2.5 text-[clamp(.86rem,.88vw,.98rem)] leading-[1.55] text-cream/68">{meta.body}</p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
                   {meta.tags.map((tag) => (
                     <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[.7rem] font-bold">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <p className="mt-2.5 truncate text-[clamp(.74rem,.76vw,.88rem)] font-black text-lavender">
+                <p className="mt-2 truncate text-[clamp(.74rem,.76vw,.88rem)] font-black text-lavender">
                   {active.title} • {sourceLabel(active.source)}
                 </p>
               </motion.div>
 
-              <div className="story-steps mt-3 space-y-1.5">
+              <div className="story-steps mt-2 space-y-1.5">
                 {chapters.map((c, i) => {
                   const isActive = activeIndex === i;
                   return (
@@ -235,56 +243,54 @@ function ArtworkStoryDesktop({
                 })}
               </div>
 
-              <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/10">
+              <div className="mt-2.5 h-1 overflow-hidden rounded-full bg-white/10">
                 <div ref={progressRef} className="h-full w-full bg-gradient-to-r from-lavender to-blush" />
               </div>
             </aside>
 
-            <div className="relative flex min-h-[calc(100svh-var(--nav-height)-76px)] items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/12 bg-gradient-to-br from-white/[.08] to-white/[.03] p-[clamp(1rem,1.8vw,1.75rem)] shadow-atelier">
-              {chapters.map((item, i) => (
-                <article
-                  ref={(el) => {
-                    if (el) cardsRef.current[i] = el;
-                  }}
-                  key={item.id}
-                  className="absolute inset-[clamp(0.85rem,1.3vw,1.25rem)] grid place-items-center"
-                >
-                  <button
-                    type="button"
-                    onClick={() => onSelect(item.id)}
-                    className="group relative flex h-full w-full items-center justify-center rounded-[1.5rem] bg-ink/30 p-[clamp(.55rem,1vw,.8rem)]"
+            <div className="story-panel-frame relative flex h-[min(76svh,680px)] items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/12 bg-gradient-to-br from-white/[.08] to-white/[.03] p-[clamp(1rem,1.8vw,1.75rem)] shadow-atelier">
+              {chapters.map((item, i) => {
+                const isActive = i === activeIndex;
+                return (
+                  <article
+                    ref={(el) => {
+                      if (el) cardsRef.current[i] = el;
+                    }}
+                    key={item.id}
+                    className="absolute inset-[clamp(0.75rem,1.2vw,1.15rem)] grid place-items-center"
+                    style={{ zIndex: isActive ? 30 : 10 }}
                   >
-                    {/* decorative blur only */}
-                    <div className="pointer-events-none absolute inset-6 opacity-30 blur-2xl">
+                    <button
+                      type="button"
+                      onClick={() => onSelect(item.id)}
+                      className="group relative flex h-full w-full items-center justify-center rounded-[1.5rem] bg-ink/25 p-[clamp(.5rem,.9vw,.75rem)]"
+                    >
+                      {/* decorative blur only behind active art */}
+                      <div className="pointer-events-none absolute inset-6 opacity-25 blur-2xl" aria-hidden>
+                        <Image src={item.imageUrl} alt="" width={item.width} height={item.height} className="h-full w-full object-contain" />
+                      </div>
                       <Image
                         src={item.imageUrl}
-                        alt=""
+                        alt={item.title}
                         width={item.width}
                         height={item.height}
-                        className="h-full w-full object-contain"
-                        aria-hidden
+                        sizes="(max-width:1024px) 70vw, 48vw"
+                        className="relative z-10 h-auto max-h-[min(52svh,500px)] w-auto max-w-[min(92%,600px)] rounded-[1.45rem] object-contain opacity-100 shadow-[0_24px_80px_rgba(255,155,213,.16)]"
+                        style={{ filter: 'none' }}
+                        priority={i < 1}
                       />
-                    </div>
-                    <Image
-                      src={item.imageUrl}
-                      alt={item.title}
-                      width={item.width}
-                      height={item.height}
-                      sizes="(max-width:1024px) 70vw, 48vw"
-                      className="relative z-10 h-auto max-h-[min(54svh,520px)] w-auto max-w-[min(92%,620px)] rounded-[1.5rem] object-contain shadow-[0_24px_80px_rgba(255,155,213,.16)]"
-                      priority={i < 1}
-                    />
-                    <span className="absolute left-3 top-3 z-20 rounded-full border border-white/15 bg-ink/70 px-3 py-1 text-[.7rem] font-black text-lavender backdrop-blur">
-                      {sourceLabel(item.source)}
-                    </span>
-                    <span className="absolute bottom-3 left-3 right-3 z-20 rounded-2xl border border-white/12 bg-ink/72 p-3 text-left opacity-0 backdrop-blur-xl transition group-hover:opacity-100">
-                      <b className="text-sm">{item.title}</b>
-                      <br />
-                      <small className="text-cream/60">{t('artworks.openFull')}</small>
-                    </span>
-                  </button>
-                </article>
-              ))}
+                      <span className="absolute left-3 top-3 z-20 rounded-full border border-white/15 bg-ink/70 px-3 py-1 text-[.7rem] font-black text-lavender backdrop-blur">
+                        {sourceLabel(item.source)}
+                      </span>
+                      <span className="absolute bottom-3 left-3 right-3 z-20 rounded-2xl border border-white/12 bg-ink/72 p-3 text-left opacity-0 backdrop-blur-xl transition group-hover:opacity-100">
+                        <b className="text-sm">{item.title}</b>
+                        <br />
+                        <small className="text-cream/60">{t('artworks.openFull')}</small>
+                      </span>
+                    </button>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -305,7 +311,7 @@ function ArtworkStoryMobile({
   return (
     <section
       id="artworks-story-stage"
-      className="space-y-5 scroll-mt-[calc(var(--nav-height)+56px)] px-4 lg:hidden"
+      className="space-y-5 scroll-mt-[calc(var(--nav-height)+16px)] px-4 lg:hidden"
       aria-labelledby="artworks-story-title"
     >
       {chapters.map((item, i) => (

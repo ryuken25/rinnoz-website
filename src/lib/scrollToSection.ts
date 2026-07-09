@@ -7,7 +7,8 @@ export function getNavOffsetPx() {
 
 export function scrollExtraForId(id: string) {
   if (id === 'artworks') return 48;
-  if (id === 'artworks-story-stage') return 56;
+  // Sticky already sits at nav + story-top-gap — keep hash landing tight.
+  if (id === 'artworks-story-stage') return 16;
   if (id === 'artworks-browse') return 40;
   return 32;
 }
