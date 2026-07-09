@@ -1,5 +1,6 @@
 import type { OrderAttachmentMeta, OrderForm, OrderValidationError, OrderValidationResult } from '@/types/order';
 
+// TODO: Re-enable reference file uploads after SMTP or Resend is configured.
 export const MAX_FILES = 5;
 export const MAX_FILE_SIZE = 8 * 1024 * 1024;
 export const ALLOWED_TYPES = [
@@ -35,6 +36,7 @@ export function isValidEmail(email: string) {
 }
 
 export function validateOrderFiles(files: OrderAttachmentMeta[]): OrderValidationError[] {
+  // Kept for future SMTP/Resend attachment flow.
   const errors: OrderValidationError[] = [];
   if (files.length > MAX_FILES) {
     errors.push({ field: 'attachments', step: 3, message: `Max ${MAX_FILES} files allowed.`, label: labels.attachments });
@@ -78,7 +80,9 @@ export function validateOrder(
   if (!clean(form.characterDescription)) {
     errors.push({ field: 'characterDescription', step: 3, message: 'Character description is required.', label: labels.characterDescription });
   }
-  errors.push(...validateOrderFiles(attachments));
+
+  // Upload currently disabled on frontend; ignore attachments in validation for now.
+  void attachments;
 
   if (!termsAccepted) {
     errors.push({ field: 'terms', step: 4, message: 'Please agree to the Terms of Service before submitting.', label: labels.terms });

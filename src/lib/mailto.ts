@@ -1,4 +1,4 @@
-import type { OrderAttachmentMeta, OrderForm } from '@/types/order';
+import type { OrderForm } from '@/types/order';
 
 const ORDER_EMAIL_TO = 'takayuki.rinnozuki@gmail.com';
 
@@ -19,7 +19,8 @@ export function buildOrderSubject(form: OrderForm) {
   return `Commission Order — RinnOZ — ${style} ${type} — ${name}`;
 }
 
-export function buildOrderEmailBody(form: OrderForm, attachments: OrderAttachmentMeta[] = [], estimateLabel = '') {
+// TODO: Re-enable reference file uploads after SMTP or Resend is configured.
+export function buildOrderEmailBody(form: OrderForm, estimateLabel = '') {
   const lines = [
     'Hello RinnOZ,',
     '',
@@ -30,7 +31,6 @@ export function buildOrderEmailBody(form: OrderForm, attachments: OrderAttachmen
     `Preferred Contact: ${show(form.preferredContact, true)}`,
     `Contact Username / Link: ${show(form.contactLink, true)}`,
     `Email: ${show(form.email)}`,
-    `Language: ${(form.language || 'en').toUpperCase()}`,
     '',
     'COMMISSION',
     `Style: ${show(form.commissionStyle, true)}`,
@@ -38,8 +38,8 @@ export function buildOrderEmailBody(form: OrderForm, attachments: OrderAttachmen
     `Character Count: ${show(form.characterCount, true)}`,
     `Background: ${show(form.background, true)}`,
     `Usage: ${show(form.usage, true)}`,
-    `Deadline / Rush: ${show(form.deadline)}`,
     `Payment Method: ${show(form.paymentMethod, true)}`,
+    `Deadline / Rush: ${show(form.deadline) === 'Not provided' ? 'Flexible' : show(form.deadline)}`,
     '',
     'DETAILS',
     'Character Description:',
@@ -48,24 +48,22 @@ export function buildOrderEmailBody(form: OrderForm, attachments: OrderAttachmen
     'Personality / Lore / Story:',
     show(form.lore),
     '',
-    'Design Enhancements / Accessories:',
+    'Design / Accessories:',
     show(form.design),
     '',
     'REFERENCES',
-    `Reference Links: ${show(form.references)}`,
-    `Additional Notes: ${show(form.notes)}`,
+    'Reference Links:',
+    show(form.references),
     '',
-    'Uploaded Files:',
-    attachments.length
-      ? attachments.map((f, i) => `${i + 1}. ${f.name} (${Math.round(f.size / 1024)} KB)`).join('\n')
-      : 'No uploaded files',
+    'Manual Files:',
+    'If you have image files, please attach them manually in your email app or provide Google Drive / Toyhouse / Pinterest / image links.',
+    '',
+    'ADDITIONAL NOTES',
+    show(form.notes),
     '',
     'ESTIMATE',
     estimateLabel ? `Estimated Base: ${estimateLabel}` : 'Estimated Base: To be confirmed',
     'Final price will be confirmed by RinnOZ after reviewing references and complexity.',
-    '',
-    `Source page: ${show(form.source) || 'website'}`,
-    `Terms accepted: ${form.tos ? 'yes' : 'no'}`,
     '',
     'Thank you!',
   ];

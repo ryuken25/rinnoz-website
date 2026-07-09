@@ -5,15 +5,18 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { pricing, type StyleKey } from '@/content/pricing';
 import { socialArtworks } from '@/content/socialArtworks';
 import { discordUrl, instagramUrl, xUrl } from '@/content/socials';
-import { formatFileSize } from '@/lib/formatFileSize';
 import { buildMailtoUrl, buildOrderEmailBody, buildOrderSubject, getOrderEmailTo } from '@/lib/mailto';
-import { ALLOWED_TYPES, MAX_FILE_SIZE, MAX_FILES, validateOrder } from '@/lib/orderValidation';
+import { validateOrder } from '@/lib/orderValidation';
 import type { OrderForm, OrderLang, PreferredContact } from '@/types/order';
+import { ChoiceCard, ChoiceChip } from './ChoiceCard';
+import { OrderStatusBanner } from './OrderStatusBanner';
 
-type AttachmentItem = { id: string; file: File; previewUrl?: string };
-type SubmitState = 'idle' | 'sending' | 'success' | 'mailto-opened' | 'mailto-fallback' | 'error';
+type SubmitState = 'idle' | 'mailto-opened' | 'error';
 
-const stepLabels = { en: ['Contact', 'Commission', 'References', 'Review'], id: ['Kontak', 'Komisi', 'Referensi', 'Review'] } as const;
+const stepLabels = {
+  en: ['Contact', 'Commission', 'References', 'Review'],
+  id: ['Kontak', 'Komisi', 'Referensi', 'Review'],
+} as const;
 
 const initialForm: OrderForm = {
   name: '',
@@ -84,22 +87,30 @@ function Field({
         <Badge required={required} />
       </span>
       {children}
-      {help && <small className="helper block">{help}</small>}
-      {error && <small className="block text-sm font-bold text-rose">{error}</small>}
+      {help ? <small className="helper block">{help}</small> : null}
+      {error ? <small className="block text-sm font-bold text-rose">{error}</small> : null}
     </label>
   );
 }
 
-function SummaryLine({ label, value, required }: { label: string; value: string; required?: boolean }) {
-  const empty = !value.trim();
-  if (!required && empty) return null;
+function SummaryGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-start justify-between gap-3 border-b border-white/8 py-2 text-sm">
-      <span className="text-cream/55">{label}</span>
-      {empty ? (
-        <span className="rounded-full bg-rose/15 px-2 py-0.5 text-xs font-black uppercase tracking-[0.08em] text-rose">Missing required</span>
+    <div className="rounded-[1.4rem] border border-white/10 bg-white/[.035] p-4">
+      <p className="mb-3 text-xs font-black uppercase tracking-[.14em] text-lavender">{title}</p>
+      <div className="space-y-2">{children}</div>
+    </div>
+  );
+}
+
+function SummaryRow({ label, value, required }: { label: string; value: string; required?: boolean }) {
+  const empty = !value.trim();
+  return (
+    <div className="flex items-start justify-between gap-3 text-sm">
+      <span className="shrink-0 text-cream/55">{label}</span>
+      {empty && required ? (
+        <span className="rounded-full bg-rose/15 px-2 py-0.5 text-[.68rem] font-black uppercase tracking-[.08em] text-rose">Missing required</span>
       ) : (
-        <span className="max-w-[62%] text-right font-semibold text-cream/90">{value}</span>
+        <span className="summary-value max-w-[65%] text-right font-semibold text-cream/90">{empty ? 'Not provided' : value}</span>
       )}
     </div>
   );
@@ -111,29 +122,26 @@ export function OrderModal() {
   const [step, setStep] = useState(0);
   const [lang, setLang] = useState<OrderLang>('en');
   const [form, setForm] = useState<OrderForm>(initialForm);
-  const [attachments, setAttachments] = useState<AttachmentItem[]>([]);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [status, setStatus] = useState('');
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
-  const [fallbackMessage, setFallbackMessage] = useState('');
   const closeRef = useRef<HTMLButtonElement | null>(null);
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const est = estimate(form);
-  const attachmentMeta = useMemo(() => attachments.map((a) => ({ name: a.file.name, size: a.file.size, type: a.file.type })), [attachments]);
-  const validation = useMemo(() => validateOrder({ ...form, language: lang }, attachmentMeta, form.tos), [form, attachmentMeta, lang]);
+  const validation = useMemo(() => validateOrder({ ...form, language: lang }, [], form.tos), [form, lang]);
   const samples = useMemo(
-    () => socialArtworks.filter((a) => (form.commissionStyle === 'Chibi' ? a.tags.includes('Chibi') : a.tags.includes('Anime'))).slice(0, 4),
+    () => socialArtworks.filter((a) => (form.commissionStyle === 'Chibi' ? a.tags.includes('Chibi') : a.tags.includes('Anime') || a.tags.includes('Scene / Illustration'))).slice(0, 4),
     [form.commissionStyle],
   );
+  const chibiSample = socialArtworks.find((a) => a.tags.includes('Chibi')) || socialArtworks[1];
+  const animeSample = socialArtworks.find((a) => a.tags.includes('Anime')) || socialArtworks[0];
   const subject = useMemo(() => buildOrderSubject({ ...form, language: lang }), [form, lang]);
   const body = useMemo(
-    () => buildOrderEmailBody({ ...form, language: lang, source: form.source || (typeof location !== 'undefined' ? location.href : 'website') }, attachmentMeta, est.label),
-    [form, lang, attachmentMeta, est.label],
+    () => buildOrderEmailBody({ ...form, language: lang, source: form.source || (typeof location !== 'undefined' ? location.href : 'website') }, est.label),
+    [form, lang, est.label],
   );
   const mailtoUrl = useMemo(() => buildMailtoUrl(getOrderEmailTo(), subject, body), [subject, body]);
   const emailRequired = form.preferredContact === 'Email';
-  const hasAttachments = attachments.length > 0;
 
   function update<K extends keyof OrderForm>(key: K, value: OrderForm[K]) {
     setDirty(true);
@@ -149,8 +157,7 @@ export function OrderModal() {
   function stepStatus(index: number): 'current' | 'complete' | 'incomplete' | 'idle' {
     if (index === step) return 'current';
     const stepNo = (index + 1) as 1 | 2 | 3 | 4;
-    const errs = validation.missingByStep[stepNo];
-    if (errs.length) return 'incomplete';
+    if (validation.missingByStep[stepNo].length) return 'incomplete';
     if (index < step) return 'complete';
     return 'idle';
   }
@@ -217,51 +224,9 @@ export function OrderModal() {
     };
   }, [open, requestClose, lang]);
 
-  useEffect(() => {
-    return () => {
-      attachments.forEach((a) => {
-        if (a.previewUrl) URL.revokeObjectURL(a.previewUrl);
-      });
-    };
-  }, [attachments]);
-
-  function onPickFiles(fileList: FileList | null) {
-    if (!fileList?.length) return;
-    const next: AttachmentItem[] = [];
-    const errors: string[] = [];
-    const combined = [...attachments.map((a) => a.file), ...Array.from(fileList)];
-    if (combined.length > MAX_FILES) errors.push(`Max ${MAX_FILES} files.`);
-    Array.from(fileList).forEach((file) => {
-      if (!ALLOWED_TYPES.includes(file.type as (typeof ALLOWED_TYPES)[number])) errors.push(`${file.name}: unsupported type.`);
-      if (file.size > MAX_FILE_SIZE) errors.push(`${file.name}: max 8 MB.`);
-      else if (ALLOWED_TYPES.includes(file.type as (typeof ALLOWED_TYPES)[number])) {
-        next.push({
-          id: `${file.name}-${file.size}-${file.lastModified}-${Math.random().toString(36).slice(2, 7)}`,
-          file,
-          previewUrl: file.type.startsWith('image/') ? URL.createObjectURL(file) : undefined,
-        });
-      }
-    });
-    if (errors.length) {
-      setStatus(errors.join(' '));
-      setTouched((x) => ({ ...x, attachments: true }));
-    }
-    setDirty(true);
-    setAttachments((prev) => [...prev, ...next].slice(0, MAX_FILES));
-    if (fileInputRef.current) fileInputRef.current.value = '';
-  }
-
-  function removeAttachment(id: string) {
-    setAttachments((prev) => {
-      const target = prev.find((p) => p.id === id);
-      if (target?.previewUrl) URL.revokeObjectURL(target.previewUrl);
-      return prev.filter((p) => p.id !== id);
-    });
-    setDirty(true);
-  }
-
-  async function submitOrder() {
-    const result = validateOrder({ ...form, language: lang, source: location.href }, attachmentMeta, form.tos);
+  // TODO: Re-enable reference file uploads after SMTP or Resend is configured.
+  function submitOrder() {
+    const result = validateOrder({ ...form, language: lang, source: location.href }, [], form.tos);
     if (!result.valid) {
       setTouched((x) => ({ ...x, ...Object.fromEntries(result.errors.map((e) => [e.field, true])) }));
       if (result.firstInvalidStep) setStep(result.firstInvalidStep - 1);
@@ -270,56 +235,10 @@ export function OrderModal() {
       return;
     }
 
-    setFallbackMessage('');
-    if (!hasAttachments) {
-      window.location.href = mailtoUrl;
-      setSubmitState('mailto-opened');
-      setStatus('Email draft opened with your order subject and body filled in.');
-      setDirty(false);
-      return;
-    }
-
-    setSubmitState('sending');
-    setStatus('Sending order with attachments...');
-    try {
-      const payload = {
-        ...form,
-        language: lang,
-        source: location.href,
-        subject,
-        body,
-        mailtoUrl,
-        tos: form.tos ? 'yes' : '',
-        contactPlatform: form.preferredContact,
-        contactHandle: form.contactLink,
-        description: form.characterDescription,
-      };
-      const formData = new FormData();
-      formData.append('payload', JSON.stringify(payload));
-      attachments.forEach((item) => formData.append('attachments', item.file, item.file.name));
-      const res = await fetch('/api/order', { method: 'POST', body: formData });
-      const data = await res.json();
-      if (res.ok && data.ok) {
-        setSubmitState('success');
-        setStatus('Order sent successfully with attachments.');
-        setDirty(false);
-        return;
-      }
-      if (data.fallback === 'mailto' || data.mailtoUrl || data.mailto) {
-        setFallbackMessage(data.reason || 'Your email app will open with the order summary. Please attach your uploaded reference files manually before sending.');
-        window.location.href = data.mailtoUrl || data.mailto || mailtoUrl;
-        setSubmitState('mailto-fallback');
-        setStatus('Opened email draft fallback. Attach your files manually before sending.');
-        return;
-      }
-      throw new Error(data.error || data.message || 'Submit failed');
-    } catch (error) {
-      const msg = error instanceof Error ? error.message : 'Could not send attachments automatically.';
-      setFallbackMessage(`${msg} Your email app will open with the order summary. Please attach your files manually.`);
-      window.location.href = mailtoUrl;
-      setSubmitState('mailto-fallback');
-      setStatus('Opened email draft fallback. Attach your files manually before sending.');
-    }
+    window.location.href = mailtoUrl;
+    setSubmitState('mailto-opened');
+    setStatus('Email draft opened with your order summary.');
+    setDirty(false);
   }
 
   const missingReview = [
@@ -333,7 +252,7 @@ export function OrderModal() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[70] bg-ink/54 p-0 backdrop-blur-sm md:p-5 md:backdrop-blur-xl"
+          className="fixed inset-0 z-[70] bg-ink/54 p-0 backdrop-blur-sm md:p-4 md:backdrop-blur-xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -348,7 +267,7 @@ export function OrderModal() {
             exit={{ opacity: 0, scale: 0.96, y: 20 }}
             transition={{ type: 'spring', stiffness: 180, damping: 22 }}
             onMouseDown={(e) => e.stopPropagation()}
-            className="mx-auto flex h-dvh max-w-7xl flex-col overflow-hidden border-white/15 bg-midnight shadow-atelier md:h-[92vh] md:rounded-[2.2rem] md:border"
+            className="order-modal-content mx-auto flex h-dvh max-w-7xl flex-col overflow-hidden border-white/15 bg-midnight shadow-atelier md:h-[min(88dvh,860px)] md:rounded-[2.2rem] md:border"
           >
             <div className="flex items-center justify-between border-b border-white/10 p-4">
               <div>
@@ -360,27 +279,18 @@ export function OrderModal() {
               </button>
             </div>
 
-            <div className="grid min-h-0 flex-1 overflow-auto lg:grid-cols-[390px_1fr]">
-              <aside className="border-b border-white/10 bg-white/[.035] p-5 lg:border-b-0 lg:border-r">
+            <div className="grid min-h-0 flex-1 overflow-hidden lg:grid-cols-[minmax(280px,.82fr)_minmax(0,1.18fr)]">
+              <aside className="order-column hidden min-h-0 overflow-y-auto border-r border-white/10 bg-white/[.035] p-5 lg:block">
                 <p className="eyebrow">Live preview</p>
                 <h3 className="mt-2 font-display text-4xl">Let’s plan your artwork</h3>
                 <div className="mt-5 rounded-3xl border border-lavender/25 bg-lavender/10 p-4">
                   <p className="text-sm text-cream/62">Selected style</p>
-                  <p className="font-display text-3xl">
-                    {form.commissionStyle} / {form.type}
-                  </p>
-                  <p className="mt-1 text-sm text-cream/60">
-                    {form.characterCount} character(s) • {form.background} background
-                  </p>
+                  <p className="font-display text-3xl">{form.commissionStyle} / {form.type}</p>
+                  <p className="mt-1 text-sm text-cream/60">{form.characterCount} character(s) • {form.background}</p>
                 </div>
                 <div className="mt-4 rounded-3xl border border-blush/25 bg-blush/10 p-4">
                   <p className="text-sm text-cream/62">Rough estimate</p>
                   <p className="font-display text-4xl">{est.label}</p>
-                  <p className="text-xs text-cream/55">Final price confirmed by RinnOZ after review.</p>
-                </div>
-                <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 p-4">
-                  <p className="font-black text-lavender">Timeline</p>
-                  <p className="text-sm text-cream/65">Typical timeline: 5–30 days. Rush request may add fee.</p>
                 </div>
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   {samples.map((s) => (
@@ -389,8 +299,8 @@ export function OrderModal() {
                 </div>
               </aside>
 
-              <section className="flex min-h-0 flex-col p-5">
-                <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+              <section className="order-column flex min-h-0 flex-col">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
                   <div className="flex gap-2">
                     {stepLabels[lang].map((label, i) => {
                       const state = stepStatus(i);
@@ -400,7 +310,6 @@ export function OrderModal() {
                           key={label}
                           onClick={() => setStep(i)}
                           className={`step-dot ${state === 'current' ? 'active' : ''} ${state === 'incomplete' ? '!border-rose/50 !bg-rose/15 !text-rose' : ''} ${state === 'complete' ? '!border-mint/40 !bg-mint/15 !text-mint' : ''}`}
-                          aria-label={label}
                           title={label}
                         >
                           {state === 'complete' ? '✓' : i + 1}
@@ -414,82 +323,108 @@ export function OrderModal() {
                   </div>
                 </div>
 
-                <input name="website" value={form.website || ''} onChange={(e) => update('website', e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+                <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5 pb-28">
+                  <input name="website" value={form.website || ''} onChange={(e) => update('website', e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
-                <div className="min-h-0 flex-1">
                   {step === 0 && (
-                    <div className="grid gap-4 md:grid-cols-2">
-                      <Field label="Name / Handle" required error={fieldError('name')}>
-                        <input required value={form.name} onBlur={() => setTouched((x) => ({ ...x, name: true }))} onChange={(e) => update('name', e.target.value)} />
-                      </Field>
-                      <Field label="Preferred Contact" required error={fieldError('preferredContact')}>
-                        <select value={form.preferredContact} onChange={(e) => update('preferredContact', e.target.value as PreferredContact)}>
-                          <option>Instagram</option>
-                          <option>Discord</option>
-                          <option>X</option>
-                          <option>Email</option>
-                          <option>Other</option>
-                        </select>
-                      </Field>
+                    <div className="space-y-5">
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <Field label="Name / Handle" required error={fieldError('name')}>
+                          <input required value={form.name} onBlur={() => setTouched((x) => ({ ...x, name: true }))} onChange={(e) => update('name', e.target.value)} />
+                        </Field>
+                        <Field label="Email" required={emailRequired} error={fieldError('email')} help={emailRequired ? 'Required because preferred contact is Email.' : 'Optional unless preferred contact is Email.'}>
+                          <input type="email" value={form.email} onBlur={() => setTouched((x) => ({ ...x, email: true }))} onChange={(e) => update('email', e.target.value)} />
+                        </Field>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 font-black text-lavender">Preferred Contact <Badge required /></div>
+                        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                          {(['Instagram', 'Discord', 'X', 'Email'] as PreferredContact[]).map((item) => (
+                            <ChoiceCard key={item} selected={form.preferredContact === item} title={item} description={item === 'Email' ? 'Order updates via email' : `Chat on ${item}`} onClick={() => update('preferredContact', item)} />
+                          ))}
+                        </div>
+                      </div>
                       <Field label="Contact Username / Link" required error={fieldError('contactLink')} help={contactPlaceholder(form.preferredContact)}>
                         <input required placeholder={contactPlaceholder(form.preferredContact)} value={form.contactLink} onBlur={() => setTouched((x) => ({ ...x, contactLink: true }))} onChange={(e) => update('contactLink', e.target.value)} />
-                      </Field>
-                      <Field label="Email" required={emailRequired} error={fieldError('email')} help={emailRequired ? 'Required because preferred contact is Email.' : 'Optional unless preferred contact is Email.'}>
-                        <input type="email" value={form.email} onBlur={() => setTouched((x) => ({ ...x, email: true }))} onChange={(e) => update('email', e.target.value)} />
                       </Field>
                     </div>
                   )}
 
                   {step === 1 && (
-                    <div className="grid gap-4 md:grid-cols-2">
-                      <Field label="Style" required>
-                        <select value={form.commissionStyle} onChange={(e) => update('commissionStyle', e.target.value)}>
-                          <option>Chibi</option>
-                          <option>Anime</option>
-                          <option>Other</option>
-                          <option>Discuss first</option>
-                        </select>
-                      </Field>
-                      <Field label="Type / Crop" required>
-                        <select value={form.type} onChange={(e) => update('type', e.target.value)}>
-                          <option>Headshot</option>
-                          <option>Bust Up</option>
-                          <option>Half Body</option>
-                          <option>Full Body</option>
-                          <option>Emote</option>
-                          <option>Character Sheet</option>
-                          <option>Other</option>
-                        </select>
-                      </Field>
-                      <Field label="Character Count" required error={fieldError('characterCount')}>
-                        <input type="number" min="1" value={form.characterCount} onBlur={() => setTouched((x) => ({ ...x, characterCount: true }))} onChange={(e) => update('characterCount', e.target.value)} />
-                      </Field>
-                      <Field label="Background" required>
-                        <select value={form.background} onChange={(e) => update('background', e.target.value)}>
-                          <option>None/simple</option>
-                          <option>Complex</option>
-                        </select>
-                      </Field>
-                      <Field label="Usage" required>
-                        <select value={form.usage} onChange={(e) => update('usage', e.target.value)}>
-                          <option>Personal</option>
-                          <option>Commercial discussion needed</option>
-                        </select>
-                      </Field>
-                      <Field label="Payment Method" required>
-                        <select value={form.paymentMethod} onChange={(e) => update('paymentMethod', e.target.value)}>
-                          <option>Mandiri</option>
-                          <option>Dana</option>
-                          <option>PayPal</option>
-                        </select>
-                      </Field>
-                      <Field label="Deadline / Rush">
-                        <select value={form.deadline} onChange={(e) => update('deadline', e.target.value)}>
-                          <option>Flexible</option>
-                          <option>Specific date</option>
-                          <option>Rush</option>
-                        </select>
-                      </Field>
+                    <div className="space-y-6">
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 font-black text-lavender">Style <Badge required /></div>
+                        <div className="grid gap-3 md:grid-cols-2">
+                          <ChoiceCard
+                            selected={form.commissionStyle === 'Chibi'}
+                            title="Chibi"
+                            description="Cute icons, stickers, small mascots"
+                            meta="Starts $5 / IDR 25k"
+                            imageUrl={chibiSample?.imageUrl}
+                            imageWidth={chibiSample?.width}
+                            imageHeight={chibiSample?.height}
+                            onClick={() => update('commissionStyle', 'Chibi')}
+                          />
+                          <ChoiceCard
+                            selected={form.commissionStyle === 'Anime'}
+                            title="Anime"
+                            description="Portraits, half body, full illustrations"
+                            meta="Starts $15 / IDR 75k"
+                            imageUrl={animeSample?.imageUrl}
+                            imageWidth={animeSample?.width}
+                            imageHeight={animeSample?.height}
+                            onClick={() => update('commissionStyle', 'Anime')}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 font-black text-lavender">Type / Crop <Badge required /></div>
+                        <div className="flex flex-wrap gap-2">
+                          {['Headshot', 'Bust Up', 'Half Body', 'Full Body', 'Emote', 'Character Sheet', 'Other'].map((item) => (
+                            <ChoiceChip key={item} selected={form.type === item} title={item} onClick={() => update('type', item)} />
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <Field label="Character Count" required error={fieldError('characterCount')}>
+                          <input type="number" min="1" value={form.characterCount} onBlur={() => setTouched((x) => ({ ...x, characterCount: true }))} onChange={(e) => update('characterCount', e.target.value)} />
+                        </Field>
+                        <Field label="Deadline / Rush">
+                          <select value={form.deadline} onChange={(e) => update('deadline', e.target.value)}>
+                            <option>Flexible</option>
+                            <option>Specific date</option>
+                            <option>Rush</option>
+                          </select>
+                        </Field>
+                      </div>
+
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 font-black text-lavender">Background <Badge required /></div>
+                        <div className="grid gap-3 md:grid-cols-2">
+                          <ChoiceCard selected={form.background === 'None/simple'} title="None / simple" description="Clean soft backdrop" onClick={() => update('background', 'None/simple')} />
+                          <ChoiceCard selected={form.background === 'Complex'} title="Complex" description="Detailed scene background" meta="From $10 / IDR 50k" onClick={() => update('background', 'Complex')} />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 font-black text-lavender">Usage <Badge required /></div>
+                        <div className="grid gap-3 md:grid-cols-2">
+                          <ChoiceCard selected={form.usage === 'Personal'} title="Personal" description="Private / personal use" onClick={() => update('usage', 'Personal')} />
+                          <ChoiceCard selected={form.usage === 'Commercial discussion needed'} title="Commercial discussion" description="Talk first for commercial use" onClick={() => update('usage', 'Commercial discussion needed')} />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 font-black text-lavender">Payment Method <Badge required /></div>
+                        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                          <ChoiceCard selected={form.paymentMethod === 'Mandiri'} title="Mandiri" description="Bank transfer" onClick={() => update('paymentMethod', 'Mandiri')} />
+                          <ChoiceCard selected={form.paymentMethod === 'Dana'} title="Dana" description="Local ID payment" onClick={() => update('paymentMethod', 'Dana')} />
+                          <ChoiceCard selected={form.paymentMethod === 'PayPal'} title="PayPal" description="International payment" onClick={() => update('paymentMethod', 'PayPal')} />
+                          <ChoiceCard selected={form.paymentMethod === 'Other'} title="Other" description="Discuss with RinnOZ" onClick={() => update('paymentMethod', 'Other')} />
+                        </div>
+                      </div>
                     </div>
                   )}
 
@@ -501,89 +436,84 @@ export function OrderModal() {
                       <Field label="Personality / Lore / Story">
                         <textarea value={form.lore} onChange={(e) => update('lore', e.target.value)} />
                       </Field>
-                      <Field label="Design Enhancements / Accessories">
+                      <Field label="Design / Accessories">
                         <textarea value={form.design} onChange={(e) => update('design', e.target.value)} />
                       </Field>
-                      <Field label="Reference Links" help="Google Drive, Imgur, Toyhouse, Pinterest, direct links, or DM refs.">
-                        <textarea value={form.references} onChange={(e) => update('references', e.target.value)} />
-                      </Field>
-                      <Field label="Reference image / file" help="Upload character references, moodboard, pose sketch, or sample images. Max 5 files. Note: email drafts can auto-fill subject/message, but browsers cannot attach files through mailto automatically." error={fieldError('attachments')}>
-                        <input ref={fileInputRef} type="file" multiple accept="image/png,image/jpeg,image/webp,image/gif,application/pdf" onChange={(e) => onPickFiles(e.target.files)} className="block w-full rounded-2xl border border-white/12 bg-white/5 p-3 text-sm" />
+                      <Field
+                        label="Reference Links"
+                        help="File upload is temporarily disabled. For now, attach files manually in your email app or paste reference links here."
+                      >
+                        <textarea
+                          placeholder="Paste Google Drive, Toyhouse, Pinterest board, Instagram/X post, image links, or any reference URLs here."
+                          value={form.references}
+                          onChange={(e) => update('references', e.target.value)}
+                        />
                       </Field>
                       <Field label="Additional Notes">
                         <textarea value={form.notes} onChange={(e) => update('notes', e.target.value)} />
                       </Field>
-                      {attachments.length > 0 && (
-                        <div className="md:col-span-2 grid gap-3 sm:grid-cols-2">
-                          {attachments.map((item) => (
-                            <div key={item.id} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3">
-                              {item.previewUrl ? (
-                                // eslint-disable-next-line @next/next/no-img-element
-                                <img src={item.previewUrl} alt={item.file.name} className="h-14 w-14 rounded-xl object-cover" />
-                              ) : (
-                                <div className="grid h-14 w-14 place-items-center rounded-xl bg-ink/50 text-xs font-black text-lavender">PDF</div>
-                              )}
-                              <div className="min-w-0 flex-1">
-                                <p className="truncate text-sm font-bold">{item.file.name}</p>
-                                <p className="text-xs text-cream/55">{formatFileSize(item.file.size)}</p>
-                              </div>
-                              <button type="button" className="btn btn-ghost px-3 py-2 text-sm" onClick={() => removeAttachment(item.id)}>
-                                Remove
-                              </button>
-                            </div>
-                          ))}
-                        </div>
-                      )}
                     </div>
                   )}
 
                   {step === 3 && (
-                    <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
-                      <div className="rounded-3xl border border-white/10 bg-ink/45 p-5">
+                    <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_300px]">
+                      <div className="space-y-4">
                         {!validation.valid ? (
-                          <div className="space-y-4">
-                            <div className="rounded-3xl border border-rose/30 bg-rose/10 p-4">
-                              <p className="font-black text-rose">Please complete required details first.</p>
-                              <p className="mt-2 text-sm text-cream/75">
-                                {missingReview.length} required field{missingReview.length === 1 ? '' : 's'} {missingReview.length === 1 ? 'is' : 'are'} missing:
-                              </p>
-                              <ul className="mt-3 space-y-2">
-                                {missingReview.map((err) => (
-                                  <li key={`${err.field}-${err.message}`} className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm">
-                                    <span>{err.label}</span>
-                                    <button type="button" className="btn btn-ghost px-3 py-1 text-xs" onClick={() => setStep(err.step - 1)}>
-                                      Go to Step {err.step}
-                                    </button>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
+                          <div className="rounded-3xl border border-rose/30 bg-rose/10 p-4">
+                            <p className="font-black text-rose">Please complete required details first.</p>
+                            <p className="mt-2 text-sm text-cream/75">
+                              {missingReview.length} required field{missingReview.length === 1 ? '' : 's'} {missingReview.length === 1 ? 'is' : 'are'} missing:
+                            </p>
+                            <ul className="mt-3 space-y-2">
+                              {missingReview.map((err) => (
+                                <li key={`${err.field}-${err.message}`} className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm">
+                                  <span>{err.label}</span>
+                                  <button type="button" className="btn btn-ghost px-3 py-1 text-xs" onClick={() => setStep(err.step - 1)}>
+                                    Go to Step {err.step}
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         ) : (
-                          <div className="space-y-1">
-                            <p className="mb-3 font-black text-lavender">Final summary</p>
-                            <SummaryLine label="Name / Handle" value={form.name} required />
-                            <SummaryLine label="Preferred Contact" value={form.preferredContact} required />
-                            <SummaryLine label="Contact Username / Link" value={form.contactLink} required />
-                            <SummaryLine label="Email" value={form.email || 'Not provided'} />
-                            <SummaryLine label="Style" value={form.commissionStyle} required />
-                            <SummaryLine label="Type / Crop" value={form.type} required />
-                            <SummaryLine label="Character Count" value={form.characterCount} required />
-                            <SummaryLine label="Background" value={form.background} required />
-                            <SummaryLine label="Usage" value={form.usage} required />
-                            <SummaryLine label="Payment Method" value={form.paymentMethod} required />
-                            <SummaryLine label="Deadline / Rush" value={form.deadline || 'Not provided'} />
-                            <SummaryLine label="Character Description" value={form.characterDescription} required />
-                            <SummaryLine label="Personality / Lore / Story" value={form.lore || 'Not provided'} />
-                            <SummaryLine label="Design / Accessories" value={form.design || 'Not provided'} />
-                            <SummaryLine label="Reference Links" value={form.references || 'Not provided'} />
-                            <SummaryLine label="Uploaded Files" value={attachments.length ? attachments.map((a) => a.file.name).join(', ') : 'No uploaded files'} />
-                            <SummaryLine label="Estimate" value={est.label} />
+                          <div className="space-y-3">
+                            <SummaryGroup title="Client">
+                              <SummaryRow label="Name / Handle" value={form.name} required />
+                              <SummaryRow label="Preferred Contact" value={form.preferredContact} required />
+                              <SummaryRow label="Contact" value={form.contactLink} required />
+                              <SummaryRow label="Email" value={form.email || 'Not provided'} />
+                            </SummaryGroup>
+                            <SummaryGroup title="Commission">
+                              <SummaryRow label="Style" value={form.commissionStyle} required />
+                              <SummaryRow label="Type / Crop" value={form.type} required />
+                              <SummaryRow label="Character Count" value={form.characterCount} required />
+                              <SummaryRow label="Background" value={form.background} required />
+                              <SummaryRow label="Usage" value={form.usage} required />
+                              <SummaryRow label="Payment" value={form.paymentMethod} required />
+                              <SummaryRow label="Deadline" value={form.deadline || 'Flexible'} />
+                            </SummaryGroup>
+                            <SummaryGroup title="Details">
+                              <SummaryRow label="Character Description" value={form.characterDescription} required />
+                              <SummaryRow label="Personality / Lore" value={form.lore || 'Not provided'} />
+                              <SummaryRow label="Design / Accessories" value={form.design || 'Not provided'} />
+                              <SummaryRow label="Additional Notes" value={form.notes || 'Not provided'} />
+                            </SummaryGroup>
+                            <SummaryGroup title="References">
+                              <SummaryRow label="Reference Links" value={form.references || 'Not provided'} />
+                              <SummaryRow label="Manual Files" value="Attach manually in your email app if needed." />
+                            </SummaryGroup>
+                            <SummaryGroup title="Estimate">
+                              <SummaryRow label="Estimated Base" value={est.label} />
+                            </SummaryGroup>
                           </div>
                         )}
                       </div>
 
                       <div className="space-y-3">
+                        {submitState === 'mailto-opened' ? (
+                          <OrderStatusBanner title="Email draft opened with your order summary." detail="Attach image files manually in your email app if needed." />
+                        ) : null}
+
                         <label className="flex gap-3 rounded-3xl border border-white/10 bg-white/5 p-4 text-cream/80">
                           <input
                             className="mt-1 w-auto"
@@ -594,20 +524,22 @@ export function OrderModal() {
                               update('tos', e.target.checked);
                             }}
                           />
-                          <span>
-                            I agree to RinnOZ <a href="#terms" className="text-lavender underline">Terms of Service</a>.
+                          <span className="space-y-2">
+                            <span className="block">
+                              I agree to RinnOZ <a href="#terms" className="text-lavender underline">Terms of Service</a>.
+                            </span>
                             <Badge required />
                           </span>
                         </label>
-                        {fieldError('terms') && <p className="text-sm font-bold text-rose">{fieldError('terms')}</p>}
+                        {fieldError('terms') ? <p className="text-sm font-bold text-rose">{fieldError('terms')}</p> : null}
 
                         {!validation.valid ? (
                           <button type="button" className="btn btn-primary w-full" onClick={jumpToFirstInvalid}>
                             Complete Required Fields
                           </button>
                         ) : (
-                          <button type="button" className="btn btn-primary w-full" onClick={submitOrder} disabled={submitState === 'sending'}>
-                            {submitState === 'sending' ? 'Sending…' : hasAttachments ? 'Send Order with Attachments' : 'Open Email Draft'}
+                          <button type="button" className="btn btn-primary w-full" onClick={submitOrder}>
+                            Open Email Draft to RinnOZ
                           </button>
                         )}
 
@@ -625,23 +557,21 @@ export function OrderModal() {
                       </div>
                     </div>
                   )}
+
+                  {status && step !== 3 ? <p className="mt-4 rounded-3xl border border-white/10 bg-white/5 p-4 text-cream/75">{status}</p> : null}
+                  {status && step === 3 && submitState !== 'mailto-opened' ? <p className="mt-4 rounded-3xl border border-white/10 bg-white/5 p-4 text-cream/75">{status}</p> : null}
                 </div>
 
-                {(status || fallbackMessage) && (
-                  <p className="mt-4 rounded-3xl border border-white/10 bg-white/5 p-4 text-cream/75">
-                    {status}
-                    {fallbackMessage ? ` ${fallbackMessage}` : ''}
-                  </p>
-                )}
-
-                <div className="mt-5 flex justify-between border-t border-white/10 pt-4">
+                <div className="sticky bottom-0 flex items-center justify-between border-t border-white/10 bg-[#0b0618]/92 px-5 py-4 backdrop-blur-xl">
                   <button type="button" className="btn btn-ghost" disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>
                     ← Back
                   </button>
-                  {step < 3 && (
+                  {step < 3 ? (
                     <button type="button" className="btn btn-primary" onClick={goNext}>
                       Next →
                     </button>
+                  ) : (
+                    <span className="text-sm text-cream/45">Review & open email draft</span>
                   )}
                 </div>
               </section>

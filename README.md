@@ -24,10 +24,19 @@ SMTP_FROM=
 
 ## Order flow
 - Step form with clear **Required / Optional** badges
-- No attachments → frontend opens `mailto:` draft with subject + body filled
-- With attachments → `POST /api/order` as `multipart/form-data`
-- If Resend/SMTP is not configured, API returns mailto fallback and asks client to attach files manually
-- Validation + rate-limit + honeypot on `/api/order`
+- Visual choice cards for contact / style / crop / background / payment
+- Submit opens a prefilled email draft using `mailto:`
+- `mailto:` can fill recipient, subject, and body
+
+### Reference file upload status
+
+Reference file upload is temporarily disabled.
+
+The order form currently opens a prefilled email draft using `mailto:`. `mailto:` can fill recipient, subject, and body, but cannot attach files uploaded in the browser.
+
+For now, clients should paste reference links in the form or attach files manually in their email app.
+
+To re-enable direct attachment sending later, configure Resend or SMTP in Vercel environment variables.
 
 ## Deploy to Vercel
 ```bash

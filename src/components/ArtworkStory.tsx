@@ -48,10 +48,14 @@ function ArtworkStoryDesktop({chapters,onSelect}:{chapters:SocialArtwork[];onSel
       scrollTrigger: {
         id: 'rinnoz-artwork-story',
         trigger: pinRef.current,
-        start: 'top top',
+        start: () => {
+          const nav = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 88;
+          return `top+=${nav + 18} top`;
+        },
         end: () => `+=${Math.max(2200, window.innerHeight * Math.max(1, chapters.length - 1))}`,
         scrub: .65,
         pin: true,
+        pinSpacing: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         markers: false,
@@ -79,22 +83,22 @@ function ArtworkStoryDesktop({chapters,onSelect}:{chapters:SocialArtwork[];onSel
   }
   const active = chapters[activeIndex] || chapters[0]; const meta = chapterMeta[activeIndex] || chapterMeta[0]; if(!active) return null;
   return <div ref={rootRef} className="hidden lg:block">
-    <div ref={pinRef} className="relative min-h-[calc(100svh-var(--navbar-height))] overflow-hidden bg-ink/20 py-[clamp(1rem,2vh,2rem)]">
+    <div ref={pinRef} className="relative min-h-[calc(100svh-var(--nav-height,var(--navbar-height))-36px)] overflow-hidden bg-ink/20 py-[clamp(1rem,2vh,2rem)]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(255,158,216,.16),transparent_28%),radial-gradient(circle_at_20%_70%,rgba(216,198,255,.13),transparent_34%)]" />
-      <div className="relative z-10 mx-auto grid min-h-[calc(100svh-var(--navbar-height)-2rem)] w-full max-w-[1360px] grid-cols-[.86fr_1.14fr] items-center gap-[clamp(1.5rem,3vw,3rem)] px-[clamp(1.25rem,3vw,3.5rem)]">
-        <aside className="max-h-[calc(100svh-var(--navbar-height)-2rem)] overflow-hidden rounded-[1.8rem] border border-white/12 bg-ink/66 p-[clamp(1.1rem,1.7vw,1.65rem)] shadow-glow backdrop-blur-2xl">
+      <div className="relative z-10 mx-auto grid min-h-[calc(100svh-var(--nav-height,var(--navbar-height))-48px)] w-full max-w-[1360px] grid-cols-[.86fr_1.14fr] items-center gap-[clamp(1.5rem,3vw,3rem)] px-[clamp(1.25rem,3vw,3.5rem)]">
+        <aside className="story-panel max-h-[calc(100svh-var(--nav-height,var(--navbar-height))-48px)] overflow-hidden rounded-[1.8rem] border border-white/12 bg-ink/66 p-[clamp(1.1rem,1.7vw,1.65rem)] shadow-glow backdrop-blur-2xl">
           <p className="text-[clamp(.68rem,.72vw,.8rem)] font-black uppercase tracking-[.18em] text-blush">Real scroll story</p>
           <motion.div key={active.id} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:.24}}>
             <p className="mt-[clamp(.8rem,1.8vh,1.35rem)] text-[clamp(.72rem,.75vw,.85rem)] font-black uppercase tracking-[.08em] text-blush">{meta.kicker}</p>
-            <h3 className="mt-2 font-display text-[clamp(2.15rem,3.1vw,4.25rem)] leading-[.95] tracking-[-.045em]">{meta.title}</h3>
-            <p className="mt-[clamp(.75rem,1.5vh,1.15rem)] text-[clamp(.9rem,.9vw,1.05rem)] leading-[1.65] text-cream/68">{meta.body}</p>
+            <h3 className="story-title mt-2 font-display text-[clamp(2.05rem,2.9vw,3.85rem)] leading-[.98] tracking-[-.045em]">{meta.title}</h3>
+            <p className="story-body-long mt-[clamp(.75rem,1.5vh,1.15rem)] text-[clamp(.9rem,.9vw,1.05rem)] leading-[1.65] text-cream/68">{meta.body}</p>
             <div className="mt-3 flex flex-wrap gap-2">{meta.tags.map(t=><span key={t} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[.72rem] font-bold">{t}</span>)}</div>
             <p className="mt-3 truncate text-[clamp(.78rem,.78vw,.92rem)] font-black text-lavender">{active.title} • {sourceLabel(active.source)}</p>
           </motion.div>
-          <div className="mt-[clamp(.8rem,1.7vh,1.25rem)] space-y-2">{chapters.map((c,i)=><button type="button" onClick={()=>jumpTo(i)} key={c.id} className={`flex w-full items-start gap-3 rounded-2xl border px-4 py-2.5 text-left transition ${activeIndex===i?'border-lavender/70 bg-lavender/12 shadow-[0_0_24px_rgba(216,198,255,.12)]':'border-white/10 bg-white/5 opacity-58 hover:opacity-100'}`}><span className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${activeIndex===i?'animate-pulse bg-blush':'bg-white/25'}`}/><div className="min-w-0"><p className="text-[clamp(.68rem,.68vw,.78rem)] font-black uppercase tracking-[.08em] text-blush">{chapterMeta[i]?.kicker}</p><p className="truncate text-[clamp(.78rem,.8vw,.95rem)] font-bold leading-snug">{chapterMeta[i]?.title}</p></div></button>)}</div>
+          <div className="story-steps mt-[clamp(.8rem,1.7vh,1.25rem)] space-y-2">{chapters.map((c,i)=><button type="button" onClick={()=>jumpTo(i)} key={c.id} className={`flex w-full items-start gap-3 rounded-2xl border px-4 py-2.5 text-left transition ${activeIndex===i?'border-lavender/70 bg-lavender/12 shadow-[0_0_24px_rgba(216,198,255,.12)]':'border-white/10 bg-white/5 opacity-58 hover:opacity-100'}`}><span className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${activeIndex===i?'animate-pulse bg-blush':'bg-white/25'}`}/><div className="min-w-0"><p className="text-[clamp(.68rem,.68vw,.78rem)] font-black uppercase tracking-[.08em] text-blush">{chapterMeta[i]?.kicker}</p><p className="truncate text-[clamp(.78rem,.8vw,.95rem)] font-bold leading-snug">{chapterMeta[i]?.title}</p></div></button>)}</div>
           <div className="mt-[clamp(.8rem,1.8vh,1.25rem)] h-1.5 overflow-hidden rounded-full bg-white/10"><div ref={progressRef} className="h-full w-full bg-gradient-to-r from-lavender to-blush" /></div>
         </aside>
-        <div className="story-art-stage relative flex min-h-[calc(100svh-var(--navbar-height)-3rem)] items-center justify-center overflow-hidden rounded-[2rem] border border-white/12 bg-gradient-to-br from-white/[.09] to-white/[.03] p-[clamp(1rem,1.8vw,1.5rem)] shadow-atelier">
+        <div className="story-art-frame relative flex min-h-[calc(100svh-var(--nav-height,var(--navbar-height))-72px)] items-center justify-center overflow-hidden rounded-[2rem] border border-white/12 bg-gradient-to-br from-white/[.09] to-white/[.03] p-[clamp(1rem,1.8vw,1.5rem)] shadow-atelier">
           {chapters.map((item,i)=><article ref={(el)=>{ if(el) cardsRef.current[i]=el; }} key={item.id} className="story-card absolute inset-[clamp(1rem,1.6vw,1.5rem)] grid place-items-center"><button type="button" onClick={()=>onSelect(item.id)} className="group relative flex h-full w-full items-center justify-center rounded-[1.6rem] bg-ink/42 p-[clamp(.7rem,1.2vw,1rem)]"><Image src={item.imageUrl} alt={item.title} width={item.width} height={item.height} sizes="(max-width:1024px) 70vw, 48vw" className="h-auto max-h-[min(58svh,620px)] w-auto max-w-[min(680px,48vw)] rounded-[1.25rem] object-contain shadow-atelier" priority={i<1}/><span className="absolute left-4 top-4 rounded-full border border-white/15 bg-ink/70 px-3 py-1 text-[.72rem] font-black text-lavender backdrop-blur">{sourceLabel(item.source)}</span><span className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/12 bg-ink/72 p-3 text-left opacity-0 backdrop-blur-xl transition group-hover:opacity-100"><b className="text-sm">{item.title}</b><br/><small className="text-cream/60">Click to open lightbox</small></span></button></article>)}
         </div>
       </div>

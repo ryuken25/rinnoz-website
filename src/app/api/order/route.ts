@@ -190,7 +190,8 @@ export async function POST(req: NextRequest) {
   const to = process.env.ORDER_EMAIL_TO || getOrderEmailTo();
   const from = process.env.ORDER_EMAIL_FROM || process.env.SMTP_FROM || 'commissions@rinnoz.vercel.app';
   const subject = subjectOverride || buildOrderSubject(form);
-  const text = bodyOverride || buildOrderEmailBody(form, attachmentMeta);
+  // TODO: Re-enable attachment-aware email body after SMTP/Resend is configured.
+  const text = bodyOverride || buildOrderEmailBody(form);
   const mailtoUrl = mailtoOverride || buildMailtoUrl(to, subject, text);
   const replyTo = form.email || undefined;
 
