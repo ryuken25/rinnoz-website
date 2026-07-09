@@ -1,0 +1,5 @@
+import { dontItems, doItems, policies } from '@/content/terms'; import { SectionShell } from './SectionShell';
+export function TermsSection(){ return <SectionShell id="terms" eyebrow="Before you order" title="A clear commission board" intro="Quickly check what Rinn accepts, what is out of scope, and how payment, revisions, posting, and timing work.">
+  <div className="grid gap-5 md:grid-cols-2"><div className="card paper-card p-6"><h3 className="mb-4 text-2xl font-black text-mint">DO / Accepted</h3>{doItems.map(x=><p key={x} className="py-2 text-cream/82">✓ {x}</p>)}</div><div className="card paper-card p-6"><h3 className="mb-4 text-2xl font-black text-rose">DON&apos;T / Not accepted</h3>{dontItems.map(x=><p key={x} className="py-2 text-cream/82">✕ {x}</p>)}</div></div>
+  <div className="mt-6 grid gap-3">{policies.map((p,i)=><details key={p.title} className="card p-5" open={i===1}><summary className="cursor-pointer text-xl font-black text-lavender">{p.title}</summary><p className="mt-3 leading-7 text-cream/72">{p.body}</p></details>)}</div>
+</SectionShell> }

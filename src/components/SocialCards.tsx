@@ -1,0 +1,2 @@
+import { socials } from '@/content/socials'; import { SectionShell } from './SectionShell';
+export function SocialCards(){ return <SectionShell id="socials" eyebrow="Official links" title="Find RinnOZ around the web"><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{socials.map(s=><a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="card p-5 transition hover:-translate-y-1 hover:border-blush/40"><b>{s.label}</b><p className="mt-2 break-all text-sm text-cream/55">{s.href}</p></a>)}</div></SectionShell> }
