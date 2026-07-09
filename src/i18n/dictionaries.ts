@@ -210,6 +210,7 @@ const id: Dict = {
   faq: {
     eyebrow: 'FAQ',
     title: 'Jawaban cepat sebelum order',
+    tapHint: 'Ketuk untuk lihat jawaban',
     items: [
       ['Bisa minta commercial use?', 'Diskusikan via DM sebelum order.'],
       ['Bisa minta rush delivery?', 'Bisa, dengan biaya tambahan jika disetujui.'],
@@ -616,6 +617,7 @@ const en: Dict = {
   faq: {
     eyebrow: 'FAQ',
     title: 'Quick answers before ordering',
+    tapHint: 'Tap to reveal answer',
     items: [
       ['Can I request commercial use?', 'Discuss via DM before ordering.'],
       ['Can I ask for rush delivery?', 'Yes, with additional fee if accepted.'],
