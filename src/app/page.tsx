@@ -9,24 +9,33 @@ import { OrderModal } from '@/components/OrderModal';
 import { OrderWizard } from '@/components/OrderWizard';
 import { PricingSection } from '@/components/PricingSection';
 import { ProcessTimeline } from '@/components/ProcessTimeline';
+import { SiteShell } from '@/components/SiteShell';
 import { SocialCards } from '@/components/SocialCards';
 import { TermsSection } from '@/components/TermsSection';
 
 export default function Page() {
-  return <main>
-    <AnimatedBackground />
-    <Navbar />
-    <Hero />
-    <TermsSection />
-    <PricingSection />
-    <ArtworkGallery />
-    <ProcessTimeline />
-    <FaqSection />
-    <OrderWizard />
-    <SocialCards />
-    <Footer />
-    <FloatingCta />
-    <OrderModal />
-    <script dangerouslySetInnerHTML={{ __html: `if(location.hash==='#termsofservice')location.hash='#terms';if(location.hash==='#form')location.hash='#order';if(location.hash==='#pricelist')location.hash='#pricing';` }} />
-  </main>;
+  return (
+    <SiteShell>
+      <main>
+        <AnimatedBackground />
+        <Navbar />
+        <Hero />
+        <TermsSection />
+        <PricingSection />
+        <ArtworkGallery />
+        <ProcessTimeline />
+        <FaqSection />
+        <OrderWizard />
+        <SocialCards />
+        <Footer />
+        <FloatingCta />
+        <OrderModal />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(location.hash==='#termsofservice')location.hash='#terms';if(location.hash==='#form')location.hash='#order';if(location.hash==='#pricelist')location.hash='#pricing';`,
+          }}
+        />
+      </main>
+    </SiteShell>
+  );
 }
