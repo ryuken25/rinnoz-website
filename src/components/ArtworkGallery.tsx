@@ -34,7 +34,7 @@ export function ArtworkGallery() {
       <ArtworkStory items={storyItems} onSelect={setSelectedId} />
 
       {/* Browse grid after story */}
-      <section id="artworks-browse" className="relative isolate scroll-mt-[calc(var(--nav-height)+40px)] px-4 pb-8 pt-6">
+      <section id="artworks-browse" className="relative isolate mt-[clamp(2rem,5vh,4rem)] scroll-mt-[calc(var(--nav-height)+28px)] px-4 pb-[clamp(3rem,7vh,5rem)] pt-[clamp(1.25rem,3vh,2rem)]">
         <div className="mx-auto max-w-7xl">
           <ArtworkBrowse items={allItems} filter={filter} setFilter={setFilter} onSelect={setSelectedId} />
           <div className="mt-8 flex flex-wrap gap-3">

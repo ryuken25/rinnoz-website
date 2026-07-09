@@ -73,7 +73,7 @@ function ArtworkStoryDesktop({
       : 'text-[clamp(2rem,2.65vw,3.35rem)] leading-[1.02]';
 
   // Keep pin travel compact — avoid giant blank after last chapter.
-  const minHeightSvh = Math.max(400, chapters.length * 84);
+  const minHeightSvh = Math.max(320, chapters.length * 64);
 
   useGSAP(
     () => {
@@ -97,7 +97,7 @@ function ArtworkStoryDesktop({
       gsap.set(cards[0], { autoAlpha: 1, yPercent: 0, xPercent: 0, scale: 1, rotate: -0.8 });
       gsap.set(progressRef.current, { scaleX: 0, transformOrigin: '0% 50%' });
 
-      const chapterTravel = Math.min(window.innerHeight * 0.68, 560);
+      const chapterTravel = Math.min(window.innerHeight * 0.58, 480);
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -183,22 +183,24 @@ function ArtworkStoryDesktop({
       <div
         ref={rangeRef}
         id="artworks-story-stage"
-        className="relative isolate scroll-mt-[calc(var(--nav-height)+16px)]"
+        className="relative isolate overflow-visible scroll-mt-[calc(var(--nav-height)+4px)]"
         style={{ minHeight: `${minHeightSvh}svh` }}
         aria-labelledby="artworks-story-title"
       >
-        {/* decorative only — no layout push */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(255,158,216,.14),transparent_28%),radial-gradient(circle_at_20%_70%,rgba(216,198,255,.12),transparent_34%)]" />
+        {/* decorative only — clip this layer, not sticky parent */}
+        <div className="pointer-events-none absolute inset-x-0 -top-24 bottom-0 -z-10 overflow-hidden">
+          <div className="absolute left-1/2 top-1/3 h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-pink-300/10 blur-[120px]" />
+          <div className="absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/10 blur-[120px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(255,158,216,.12),transparent_28%),radial-gradient(circle_at_20%_70%,rgba(216,198,255,.1),transparent_34%)]" />
         </div>
 
-        {/* Center in remaining viewport under navbar via flex items-center — no large pt/mt */}
+        {/* Center-biased slightly upper via CSS --story-visual-shift */}
         <div
           ref={stageRef}
           className="story-sticky sticky flex items-center overflow-visible py-0"
         >
-          <div className="mx-auto grid w-full max-w-[1180px] grid-cols-[0.84fr_1.16fr] items-center gap-[clamp(1.25rem,2.4vw,2.5rem)] px-[clamp(1rem,2.5vw,2.5rem)]">
-            <aside className="story-panel story-panel-frame flex max-h-[min(76svh,680px)] flex-col overflow-hidden rounded-[1.75rem] border border-white/12 bg-ink/70 p-[clamp(1rem,1.55vw,1.45rem)] shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_20px_60px_rgba(0,0,0,.28)] backdrop-blur-2xl">
+          <div className="story-stage-grid mx-auto grid w-full max-w-[1180px] grid-cols-[0.84fr_1.16fr] items-center gap-[clamp(1.25rem,2.4vw,2.5rem)] px-[clamp(1rem,2.5vw,2.5rem)]">
+            <aside className="story-panel story-panel-frame flex flex-col overflow-hidden rounded-[1.75rem] border border-white/12 bg-ink/70 p-[clamp(1rem,1.55vw,1.45rem)] shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_20px_60px_rgba(0,0,0,.28)] backdrop-blur-2xl">
               <p className="text-[0.72rem] font-black uppercase tracking-[0.14em] text-blush">{storyEyebrow}</p>
               <motion.div key={`${active.id}-${meta.kicker}`} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} className="min-h-0 flex-1">
                 <p className="mt-2.5 text-[0.72rem] font-black uppercase tracking-[0.12em] text-blush">{meta.kicker}</p>
@@ -248,7 +250,7 @@ function ArtworkStoryDesktop({
               </div>
             </aside>
 
-            <div className="story-panel-frame relative flex h-[min(76svh,680px)] items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/12 bg-gradient-to-br from-white/[.08] to-white/[.03] p-[clamp(1rem,1.8vw,1.75rem)] shadow-atelier">
+            <div className="story-panel-frame relative flex items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/12 bg-gradient-to-br from-white/[.08] to-white/[.03] p-[clamp(1rem,1.8vw,1.75rem)] shadow-atelier">
               {chapters.map((item, i) => {
                 const isActive = i === activeIndex;
                 return (
@@ -275,7 +277,7 @@ function ArtworkStoryDesktop({
                         width={item.width}
                         height={item.height}
                         sizes="(max-width:1024px) 70vw, 48vw"
-                        className="relative z-10 h-auto max-h-[min(52svh,500px)] w-auto max-w-[min(92%,600px)] rounded-[1.45rem] object-contain opacity-100 shadow-[0_24px_80px_rgba(255,155,213,.16)]"
+                        className="relative z-10 h-auto max-h-[min(48svh,460px)] w-auto max-w-[min(90%,560px)] rounded-[1.35rem] object-contain opacity-100 shadow-[0_24px_80px_rgba(255,155,213,.16)]"
                         style={{ filter: 'none' }}
                         priority={i < 1}
                       />
@@ -311,7 +313,7 @@ function ArtworkStoryMobile({
   return (
     <section
       id="artworks-story-stage"
-      className="space-y-5 scroll-mt-[calc(var(--nav-height)+16px)] px-4 lg:hidden"
+      className="space-y-5 scroll-mt-[calc(var(--nav-height)+4px)] px-4 lg:hidden"
       aria-labelledby="artworks-story-title"
     >
       {chapters.map((item, i) => (

@@ -17,7 +17,7 @@ export function ArtworkLandingIntro({ xCount, visibleCount, thumbnails }: Props)
   return (
     <section
       id="artworks"
-      className="relative isolate scroll-mt-[calc(var(--nav-height)+48px)] px-4 pb-8 pt-[calc(var(--nav-height)+48px)]"
+      className="relative isolate scroll-mt-[calc(var(--nav-height)+36px)] px-4 pb-[clamp(2rem,5vh,3.5rem)] pt-[calc(var(--nav-height)+36px)]"
     >
       <div className="mx-auto max-w-[1120px]">
         <div className="card paper-card overflow-hidden p-5 shadow-atelier md:p-8">
