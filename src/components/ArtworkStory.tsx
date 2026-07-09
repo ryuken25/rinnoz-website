@@ -69,11 +69,11 @@ function ArtworkStoryDesktop({
 
   const titleClass =
     locale === 'id'
-      ? 'text-[clamp(1.85rem,2.45vw,3.05rem)] leading-[1.04]'
-      : 'text-[clamp(2rem,2.65vw,3.35rem)] leading-[1.02]';
+      ? 'story-title story-title-id font-display'
+      : 'story-title font-display';
 
   // Keep pin travel compact — avoid giant blank after last chapter.
-  const minHeightSvh = Math.max(320, chapters.length * 64);
+  const minHeightSvh = Math.max(300, chapters.length * 58);
 
   useGSAP(
     () => {
@@ -97,7 +97,7 @@ function ArtworkStoryDesktop({
       gsap.set(cards[0], { autoAlpha: 1, yPercent: 0, xPercent: 0, scale: 1, rotate: -0.8 });
       gsap.set(progressRef.current, { scaleX: 0, transformOrigin: '0% 50%' });
 
-      const chapterTravel = Math.min(window.innerHeight * 0.58, 480);
+      const chapterTravel = Math.min(window.innerHeight * 0.52, 440);
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -200,25 +200,27 @@ function ArtworkStoryDesktop({
           className="story-sticky sticky flex items-center overflow-visible py-0"
         >
           <div className="story-stage-grid mx-auto grid w-full max-w-[1180px] grid-cols-[0.84fr_1.16fr] items-center gap-[clamp(1.25rem,2.4vw,2.5rem)] px-[clamp(1rem,2.5vw,2.5rem)]">
-            <aside className="story-panel story-panel-frame flex flex-col overflow-hidden rounded-[1.75rem] border border-white/12 bg-ink/70 p-[clamp(1rem,1.55vw,1.45rem)] shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_20px_60px_rgba(0,0,0,.28)] backdrop-blur-2xl">
-              <p className="text-[0.72rem] font-black uppercase tracking-[0.14em] text-blush">{storyEyebrow}</p>
-              <motion.div key={`${active.id}-${meta.kicker}`} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} className="min-h-0 flex-1">
-                <p className="mt-2.5 text-[0.72rem] font-black uppercase tracking-[0.12em] text-blush">{meta.kicker}</p>
-                <h3 className={`story-title mt-2 font-display tracking-[-.04em] ${titleClass}`}>{meta.title}</h3>
-                <p className="story-body mt-2.5 text-[clamp(.86rem,.88vw,.98rem)] leading-[1.55] text-cream/68">{meta.body}</p>
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {meta.tags.map((tag) => (
-                    <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[.7rem] font-bold">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <p className="mt-2 truncate text-[clamp(.74rem,.76vw,.88rem)] font-black text-lavender">
-                  {active.title} • {sourceLabel(active.source)}
-                </p>
-              </motion.div>
+            <aside className="story-copy-panel story-panel story-panel-frame rounded-[1.75rem] border border-white/12 bg-ink/70 p-[clamp(1rem,1.55vw,1.45rem)] shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_20px_60px_rgba(0,0,0,.28)] backdrop-blur-2xl">
+              <div className="story-copy-header">
+                <p className="text-[0.72rem] font-black uppercase tracking-[0.14em] text-blush">{storyEyebrow}</p>
+                <motion.div key={`${active.id}-${meta.kicker}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.18 }} className="flex min-h-0 flex-col gap-[clamp(.45rem,.9vh,.75rem)]">
+                  <p className="text-[0.72rem] font-black uppercase tracking-[0.12em] text-blush">{meta.kicker}</p>
+                  <h3 className={titleClass}>{meta.title}</h3>
+                  <p className="story-body text-cream/68">{meta.body}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {meta.tags.map((tag) => (
+                      <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[.7rem] font-bold">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="story-artwork-title font-black text-lavender">
+                    {active.title} • {sourceLabel(active.source)}
+                  </p>
+                </motion.div>
+              </div>
 
-              <div className="story-steps mt-2 space-y-1.5">
+              <div className="story-step-list">
                 {chapters.map((c, i) => {
                   const isActive = activeIndex === i;
                   return (
@@ -226,26 +228,26 @@ function ArtworkStoryDesktop({
                       type="button"
                       onClick={() => jumpTo(i)}
                       key={c.id}
-                      className={`story-step-card flex w-full items-start gap-2.5 rounded-2xl border px-3 py-2 text-left transition ${
+                      className={`story-step-card w-full border text-left transition ${
                         isActive
                           ? 'border-lavender/70 bg-lavender/12 shadow-[0_0_20px_rgba(216,198,255,.12)]'
                           : 'border-white/10 bg-white/5 opacity-55 hover:opacity-100'
                       }`}
                     >
-                      <span className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${isActive ? 'animate-pulse bg-blush' : 'bg-white/25'}`} />
-                      <div className="min-w-0">
-                        <p className="text-[0.66rem] font-black uppercase tracking-[0.08em] text-blush">{chapterMeta[i]?.kicker}</p>
-                        <p className="line-clamp-2 text-[clamp(.72rem,.72vw,.84rem)] font-bold leading-snug">{chapterMeta[i]?.title}</p>
+                      <span className={`story-step-dot mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${isActive ? 'animate-pulse bg-blush' : 'bg-white/25'}`} />
+                      <span className="story-step-content">
+                        <span className="story-step-kicker font-black text-blush">{chapterMeta[i]?.kicker}</span>
+                        <span className="story-step-title font-bold text-cream">{chapterMeta[i]?.title}</span>
                         {isActive ? (
-                          <p className="story-step-body mt-0.5 line-clamp-2 text-[0.7rem] leading-snug text-cream/65">{chapterMeta[i]?.body}</p>
+                          <span className="story-step-description text-cream/70">{chapterMeta[i]?.body}</span>
                         ) : null}
-                      </div>
+                      </span>
                     </button>
                   );
                 })}
               </div>
 
-              <div className="mt-2.5 h-1 overflow-hidden rounded-full bg-white/10">
+              <div className="story-progress-wrap h-1 overflow-hidden rounded-full bg-white/10">
                 <div ref={progressRef} className="h-full w-full bg-gradient-to-r from-lavender to-blush" />
               </div>
             </aside>
@@ -268,7 +270,7 @@ function ArtworkStoryDesktop({
                       className="group relative flex h-full w-full items-center justify-center rounded-[1.5rem] bg-ink/25 p-[clamp(.5rem,.9vw,.75rem)]"
                     >
                       {/* decorative blur only behind active art */}
-                      <div className="pointer-events-none absolute inset-6 opacity-25 blur-2xl" aria-hidden>
+                      <div className="story-background-artwork pointer-events-none absolute inset-6" aria-hidden>
                         <Image src={item.imageUrl} alt="" width={item.width} height={item.height} className="h-full w-full object-contain" />
                       </div>
                       <Image
@@ -277,7 +279,7 @@ function ArtworkStoryDesktop({
                         width={item.width}
                         height={item.height}
                         sizes="(max-width:1024px) 70vw, 48vw"
-                        className="relative z-10 h-auto max-h-[min(48svh,460px)] w-auto max-w-[min(90%,560px)] rounded-[1.35rem] object-contain opacity-100 shadow-[0_24px_80px_rgba(255,155,213,.16)]"
+                        className="story-active-artwork relative z-10 h-auto max-h-[min(48svh,460px)] w-auto max-w-[min(90%,560px)] rounded-[1.35rem] object-contain shadow-[0_24px_80px_rgba(255,155,213,.16)]"
                         style={{ filter: 'none' }}
                         priority={i < 1}
                       />
