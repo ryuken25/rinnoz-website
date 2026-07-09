@@ -9,6 +9,13 @@ cp .env.example .env.local
 npm run dev
 ```
 
+## Language (i18n)
+- Default language: **Bahasa Indonesia (`id`)**
+- Toggle: `ID | EN` in navbar + order modal
+- Persistence: `localStorage['rinnoz-lang']`
+- Optional query: `?lang=id` / `?lang=en`
+- Priority: query param → localStorage → default `id`
+
 ## Email environment
 ```env
 ORDER_EMAIL_TO=takayuki.rinnozuki@gmail.com
@@ -23,10 +30,10 @@ SMTP_FROM=
 ```
 
 ## Order flow
-- Step form with clear **Required / Optional** badges
+- Step form with clear **Required / Optional** badges (`Wajib / Opsional` in ID)
 - Visual choice cards for contact / style / crop / background / payment
 - Submit opens a prefilled email draft using `mailto:`
-- `mailto:` can fill recipient, subject, and body
+- Mailto subject/body follow selected language
 
 ### Reference file upload status
 

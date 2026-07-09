@@ -5,18 +5,15 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { pricing, type StyleKey } from '@/content/pricing';
 import { socialArtworks } from '@/content/socialArtworks';
 import { discordUrl, instagramUrl, xUrl } from '@/content/socials';
+import { useI18n } from '@/i18n/useI18n';
 import { buildMailtoUrl, buildOrderEmailBody, buildOrderSubject, getOrderEmailTo } from '@/lib/mailto';
 import { validateOrder } from '@/lib/orderValidation';
-import type { OrderForm, OrderLang, PreferredContact } from '@/types/order';
+import type { OrderForm, PreferredContact } from '@/types/order';
 import { ChoiceCard, ChoiceChip } from './ChoiceCard';
+import { LanguageToggle } from './LanguageToggle';
 import { OrderStatusBanner } from './OrderStatusBanner';
 
 type SubmitState = 'idle' | 'mailto-opened' | 'error';
-
-const stepLabels = {
-  en: ['Contact', 'Commission', 'References', 'Review'],
-  id: ['Kontak', 'Komisi', 'Referensi', 'Review'],
-} as const;
 
 const initialForm: OrderForm = {
   name: '',
@@ -35,7 +32,7 @@ const initialForm: OrderForm = {
   design: '',
   references: '',
   notes: '',
-  language: 'en',
+  language: 'id',
   source: '',
   tos: false,
   website: '',
@@ -59,10 +56,10 @@ function contactPlaceholder(preferred: PreferredContact) {
   return 'username / link / handle';
 }
 
-function Badge({ required }: { required?: boolean }) {
+function Badge({ required, requiredLabel, optionalLabel }: { required?: boolean; requiredLabel: string; optionalLabel: string }) {
   return (
     <span className={`rounded-full border px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-[0.12em] ${required ? 'border-pink-300/30 bg-pink-300/10 text-pink-200' : 'border-white/10 bg-white/[0.04] text-white/45'}`}>
-      {required ? 'Required' : 'Optional'}
+      {required ? requiredLabel : optionalLabel}
     </span>
   );
 }
@@ -73,18 +70,22 @@ function Field({
   children,
   help,
   error,
+  requiredLabel,
+  optionalLabel,
 }: {
   label: string;
   required?: boolean;
   children: React.ReactNode;
   help?: string;
   error?: string;
+  requiredLabel: string;
+  optionalLabel: string;
 }) {
   return (
     <label className="space-y-2">
       <span className="flex flex-wrap items-center gap-2">
         <span>{label}</span>
-        <Badge required={required} />
+        <Badge required={required} requiredLabel={requiredLabel} optionalLabel={optionalLabel} />
       </span>
       {children}
       {help ? <small className="helper block">{help}</small> : null}
@@ -102,46 +103,55 @@ function SummaryGroup({ title, children }: { title: string; children: React.Reac
   );
 }
 
-function SummaryRow({ label, value, required }: { label: string; value: string; required?: boolean }) {
+function SummaryRow({ label, value, required, missingLabel, notProvided }: { label: string; value: string; required?: boolean; missingLabel: string; notProvided: string }) {
   const empty = !value.trim();
   return (
     <div className="flex items-start justify-between gap-3 text-sm">
       <span className="shrink-0 text-cream/55">{label}</span>
       {empty && required ? (
-        <span className="rounded-full bg-rose/15 px-2 py-0.5 text-[.68rem] font-black uppercase tracking-[.08em] text-rose">Missing required</span>
+        <span className="rounded-full bg-rose/15 px-2 py-0.5 text-[.68rem] font-black uppercase tracking-[.08em] text-rose">{missingLabel}</span>
       ) : (
-        <span className="summary-value max-w-[65%] text-right font-semibold text-cream/90">{empty ? 'Not provided' : value}</span>
+        <span className="summary-value max-w-[65%] text-right font-semibold text-cream/90">{empty ? notProvided : value}</span>
       )}
     </div>
   );
 }
 
 export function OrderModal() {
+  const { locale, t } = useI18n();
   const [open, setOpen] = useState(false);
   const [dirty, setDirty] = useState(false);
   const [step, setStep] = useState(0);
-  const [lang, setLang] = useState<OrderLang>('en');
-  const [form, setForm] = useState<OrderForm>(initialForm);
+  const [form, setForm] = useState<OrderForm>({ ...initialForm, language: locale });
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [status, setStatus] = useState('');
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
   const closeRef = useRef<HTMLButtonElement | null>(null);
 
+  useEffect(() => {
+    setForm((prev) => ({ ...prev, language: locale }));
+  }, [locale]);
+
   const est = estimate(form);
-  const validation = useMemo(() => validateOrder({ ...form, language: lang }, [], form.tos), [form, lang]);
+  const validation = useMemo(() => validateOrder({ ...form, language: locale }, [], form.tos, locale), [form, locale]);
   const samples = useMemo(
     () => socialArtworks.filter((a) => (form.commissionStyle === 'Chibi' ? a.tags.includes('Chibi') : a.tags.includes('Anime') || a.tags.includes('Scene / Illustration'))).slice(0, 4),
     [form.commissionStyle],
   );
   const chibiSample = socialArtworks.find((a) => a.tags.includes('Chibi')) || socialArtworks[1];
   const animeSample = socialArtworks.find((a) => a.tags.includes('Anime')) || socialArtworks[0];
-  const subject = useMemo(() => buildOrderSubject({ ...form, language: lang }), [form, lang]);
+  const subject = useMemo(() => buildOrderSubject({ ...form, language: locale }, locale), [form, locale]);
   const body = useMemo(
-    () => buildOrderEmailBody({ ...form, language: lang, source: form.source || (typeof location !== 'undefined' ? location.href : 'website') }, est.label),
-    [form, lang, est.label],
+    () => buildOrderEmailBody({ ...form, language: locale, source: form.source || (typeof location !== 'undefined' ? location.href : 'website') }, est.label, locale),
+    [form, locale, est.label],
   );
   const mailtoUrl = useMemo(() => buildMailtoUrl(getOrderEmailTo(), subject, body), [subject, body]);
   const emailRequired = form.preferredContact === 'Email';
+  const requiredLabel = t('common.required');
+  const optionalLabel = t('common.optional');
+  const stepLabels = [t('order.steps.0'), t('order.steps.1'), t('order.steps.2'), t('order.steps.3')];
+  // steps are array in dict - use ta via t fallback: order.steps is array so use index keys carefully
+  // We'll use fixed indices via ta in component - re-get below
 
   function update<K extends keyof OrderForm>(key: K, value: OrderForm[K]) {
     setDirty(true);
@@ -178,14 +188,14 @@ export function OrderModal() {
     if (!validation.firstInvalidStep) return;
     setTouched((x) => ({ ...x, ...Object.fromEntries(validation.errors.map((e) => [e.field, true])) }));
     setStep(validation.firstInvalidStep - 1);
-    setStatus('Please complete required details first.');
+    setStatus(t('order.errors.incomplete'));
   }
 
   const requestClose = useCallback(() => {
-    if (dirty && !confirm('Close the order form? Your draft is not submitted yet.')) return;
+    if (dirty && !confirm(locale === 'id' ? 'Tutup form order? Draft kamu belum terkirim.' : 'Close the order form? Your draft is not submitted yet.')) return;
     setOpen(false);
     if (location.hash === '#order') history.replaceState(null, '', location.pathname + location.search);
-  }, [dirty]);
+  }, [dirty, locale]);
 
   useEffect(() => {
     function click(e: MouseEvent) {
@@ -212,7 +222,7 @@ export function OrderModal() {
     if (!open) return;
     const old = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    setForm((prev) => ({ ...prev, source: location.href, language: lang }));
+    setForm((prev) => ({ ...prev, source: location.href, language: locale }));
     setTimeout(() => closeRef.current?.focus(), 80);
     function key(e: KeyboardEvent) {
       if (e.key === 'Escape') requestClose();
@@ -222,11 +232,11 @@ export function OrderModal() {
       document.body.style.overflow = old;
       window.removeEventListener('keydown', key);
     };
-  }, [open, requestClose, lang]);
+  }, [open, requestClose, locale]);
 
   // TODO: Re-enable reference file uploads after SMTP or Resend is configured.
   function submitOrder() {
-    const result = validateOrder({ ...form, language: lang, source: location.href }, [], form.tos);
+    const result = validateOrder({ ...form, language: locale, source: location.href }, [], form.tos, locale);
     if (!result.valid) {
       setTouched((x) => ({ ...x, ...Object.fromEntries(result.errors.map((e) => [e.field, true])) }));
       if (result.firstInvalidStep) setStep(result.firstInvalidStep - 1);
@@ -237,7 +247,7 @@ export function OrderModal() {
 
     window.location.href = mailtoUrl;
     setSubmitState('mailto-opened');
-    setStatus('Email draft opened with your order summary.');
+    setStatus(t('order.review.draftOpened'));
     setDirty(false);
   }
 
@@ -247,6 +257,11 @@ export function OrderModal() {
     ...validation.missingByStep[3],
     ...validation.missingByStep[4],
   ];
+
+  const steps = useMemo(() => {
+    // order.steps is array - access via dictionary through t won't work for arrays; hardcode from locale via known keys
+    return locale === 'id' ? ['Kontak', 'Komisi', 'Detail', 'Review'] : ['Contact', 'Commission', 'Details', 'Review'];
+  }, [locale]);
 
   return (
     <AnimatePresence>
@@ -259,7 +274,7 @@ export function OrderModal() {
           onMouseDown={requestClose}
           role="dialog"
           aria-modal="true"
-          aria-label="RinnOZ commission order studio"
+          aria-label={t('order.studioTitle')}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 28 }}
@@ -271,38 +286,46 @@ export function OrderModal() {
           >
             <div className="flex items-center justify-between border-b border-white/10 p-4">
               <div>
-                <p className="eyebrow">Commission order studio</p>
-                <h2 className="font-display text-2xl">Start your commission</h2>
+                <p className="eyebrow">{t('order.studioEyebrow')}</p>
+                <h2 className="font-display text-2xl">{t('order.studioTitle')}</h2>
               </div>
-              <button ref={closeRef} type="button" className="btn btn-ghost" onClick={requestClose}>
-                Close
-              </button>
+              <div className="flex items-center gap-2">
+                <LanguageToggle compact />
+                <button ref={closeRef} type="button" className="btn btn-ghost" onClick={requestClose}>
+                  {t('common.close')}
+                </button>
+              </div>
             </div>
 
             <div className="grid min-h-0 flex-1 overflow-hidden lg:grid-cols-[minmax(280px,.82fr)_minmax(0,1.18fr)]">
               <aside className="order-column hidden min-h-0 overflow-y-auto border-r border-white/10 bg-white/[.035] p-5 lg:block">
-                <p className="eyebrow">Live preview</p>
-                <h3 className="mt-2 font-display text-4xl">Let’s plan your artwork</h3>
+                <p className="eyebrow">{t('order.livePreview')}</p>
+                <h3 className="mt-2 font-display text-4xl">{t('order.planTitle')}</h3>
                 <div className="mt-5 rounded-3xl border border-lavender/25 bg-lavender/10 p-4">
-                  <p className="text-sm text-cream/62">Selected style</p>
+                  <p className="text-sm text-cream/62">{t('order.selectedStyle')}</p>
                   <p className="font-display text-3xl">{form.commissionStyle} / {form.type}</p>
-                  <p className="mt-1 text-sm text-cream/60">{form.characterCount} character(s) • {form.background}</p>
+                  <p className="mt-1 text-sm text-cream/60">{form.characterCount} • {form.background}</p>
                 </div>
                 <div className="mt-4 rounded-3xl border border-blush/25 bg-blush/10 p-4">
-                  <p className="text-sm text-cream/62">Rough estimate</p>
+                  <p className="text-sm text-cream/62">{t('order.roughEstimate')}</p>
                   <p className="font-display text-4xl">{est.label}</p>
+                </div>
+                <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 p-4">
+                  <p className="font-black text-lavender">{t('order.timeline')}</p>
+                  <p className="text-sm text-cream/65">{t('order.timelineBody')}</p>
                 </div>
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   {samples.map((s) => (
                     <Image key={s.id} src={s.imageUrl} alt={s.title} width={s.width} height={s.height} className="aspect-square rounded-2xl object-cover" />
                   ))}
                 </div>
+                <p className="mt-4 text-sm text-cream/55">{t('order.tip')}</p>
               </aside>
 
               <section className="order-column flex min-h-0 flex-col">
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
                   <div className="flex gap-2">
-                    {stepLabels[lang].map((label, i) => {
+                    {steps.map((label, i) => {
                       const state = stepStatus(i);
                       return (
                         <button
@@ -317,10 +340,6 @@ export function OrderModal() {
                       );
                     })}
                   </div>
-                  <div className="flex rounded-full border border-white/10 bg-white/5 p-1">
-                    <button type="button" className={`rounded-full px-4 py-2 font-black ${lang === 'en' ? 'bg-lavender text-ink' : ''}`} onClick={() => { setLang('en'); update('language', 'en'); }}>EN</button>
-                    <button type="button" className={`rounded-full px-4 py-2 font-black ${lang === 'id' ? 'bg-lavender text-ink' : ''}`} onClick={() => { setLang('id'); update('language', 'id'); }}>ID</button>
-                  </div>
                 </div>
 
                 <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5 pb-28">
@@ -329,22 +348,22 @@ export function OrderModal() {
                   {step === 0 && (
                     <div className="space-y-5">
                       <div className="grid gap-4 md:grid-cols-2">
-                        <Field label="Name / Handle" required error={fieldError('name')}>
+                        <Field label={t('order.fields.name')} required error={fieldError('name')} requiredLabel={requiredLabel} optionalLabel={optionalLabel}>
                           <input required value={form.name} onBlur={() => setTouched((x) => ({ ...x, name: true }))} onChange={(e) => update('name', e.target.value)} />
                         </Field>
-                        <Field label="Email" required={emailRequired} error={fieldError('email')} help={emailRequired ? 'Required because preferred contact is Email.' : 'Optional unless preferred contact is Email.'}>
+                        <Field label={t('order.fields.email')} required={emailRequired} error={fieldError('email')} help={emailRequired ? t('order.helpers.emailRequired') : t('order.helpers.emailOptional')} requiredLabel={requiredLabel} optionalLabel={optionalLabel}>
                           <input type="email" value={form.email} onBlur={() => setTouched((x) => ({ ...x, email: true }))} onChange={(e) => update('email', e.target.value)} />
                         </Field>
                       </div>
                       <div className="space-y-2">
-                        <div className="flex items-center gap-2 font-black text-lavender">Preferred Contact <Badge required /></div>
+                        <div className="flex items-center gap-2 font-black text-lavender">{t('order.fields.preferredContact')} <Badge required requiredLabel={requiredLabel} optionalLabel={optionalLabel} /></div>
                         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                           {(['Instagram', 'Discord', 'X', 'Email'] as PreferredContact[]).map((item) => (
-                            <ChoiceCard key={item} selected={form.preferredContact === item} title={item} description={item === 'Email' ? 'Order updates via email' : `Chat on ${item}`} onClick={() => update('preferredContact', item)} />
+                            <ChoiceCard key={item} selected={form.preferredContact === item} title={item} description={t(`order.contacts.${item}`)} onClick={() => update('preferredContact', item)} />
                           ))}
                         </div>
                       </div>
-                      <Field label="Contact Username / Link" required error={fieldError('contactLink')} help={contactPlaceholder(form.preferredContact)}>
+                      <Field label={t('order.fields.contactLink')} required error={fieldError('contactLink')} help={contactPlaceholder(form.preferredContact)} requiredLabel={requiredLabel} optionalLabel={optionalLabel}>
                         <input required placeholder={contactPlaceholder(form.preferredContact)} value={form.contactLink} onBlur={() => setTouched((x) => ({ ...x, contactLink: true }))} onChange={(e) => update('contactLink', e.target.value)} />
                       </Field>
                     </div>
@@ -353,76 +372,52 @@ export function OrderModal() {
                   {step === 1 && (
                     <div className="space-y-6">
                       <div className="space-y-2">
-                        <div className="flex items-center gap-2 font-black text-lavender">Style <Badge required /></div>
+                        <div className="flex items-center gap-2 font-black text-lavender">{t('order.fields.style')} <Badge required requiredLabel={requiredLabel} optionalLabel={optionalLabel} /></div>
                         <div className="grid gap-3 md:grid-cols-2">
-                          <ChoiceCard
-                            selected={form.commissionStyle === 'Chibi'}
-                            title="Chibi"
-                            description="Cute icons, stickers, small mascots"
-                            meta="Starts $5 / IDR 25k"
-                            imageUrl={chibiSample?.imageUrl}
-                            imageWidth={chibiSample?.width}
-                            imageHeight={chibiSample?.height}
-                            onClick={() => update('commissionStyle', 'Chibi')}
-                          />
-                          <ChoiceCard
-                            selected={form.commissionStyle === 'Anime'}
-                            title="Anime"
-                            description="Portraits, half body, full illustrations"
-                            meta="Starts $15 / IDR 75k"
-                            imageUrl={animeSample?.imageUrl}
-                            imageWidth={animeSample?.width}
-                            imageHeight={animeSample?.height}
-                            onClick={() => update('commissionStyle', 'Anime')}
-                          />
+                          <ChoiceCard selected={form.commissionStyle === 'Chibi'} title="Chibi" description={t('order.styles.Chibi.desc')} meta={t('order.styles.Chibi.meta')} imageUrl={chibiSample?.imageUrl} imageWidth={chibiSample?.width} imageHeight={chibiSample?.height} onClick={() => update('commissionStyle', 'Chibi')} />
+                          <ChoiceCard selected={form.commissionStyle === 'Anime'} title="Anime" description={t('order.styles.Anime.desc')} meta={t('order.styles.Anime.meta')} imageUrl={animeSample?.imageUrl} imageWidth={animeSample?.width} imageHeight={animeSample?.height} onClick={() => update('commissionStyle', 'Anime')} />
                         </div>
                       </div>
-
                       <div className="space-y-2">
-                        <div className="flex items-center gap-2 font-black text-lavender">Type / Crop <Badge required /></div>
+                        <div className="flex items-center gap-2 font-black text-lavender">{t('order.fields.type')} <Badge required requiredLabel={requiredLabel} optionalLabel={optionalLabel} /></div>
                         <div className="flex flex-wrap gap-2">
                           {['Headshot', 'Bust Up', 'Half Body', 'Full Body', 'Emote', 'Character Sheet', 'Other'].map((item) => (
                             <ChoiceChip key={item} selected={form.type === item} title={item} onClick={() => update('type', item)} />
                           ))}
                         </div>
                       </div>
-
                       <div className="grid gap-4 md:grid-cols-2">
-                        <Field label="Character Count" required error={fieldError('characterCount')}>
+                        <Field label={t('order.fields.characterCount')} required error={fieldError('characterCount')} requiredLabel={requiredLabel} optionalLabel={optionalLabel}>
                           <input type="number" min="1" value={form.characterCount} onBlur={() => setTouched((x) => ({ ...x, characterCount: true }))} onChange={(e) => update('characterCount', e.target.value)} />
                         </Field>
-                        <Field label="Deadline / Rush">
+                        <Field label={t('order.fields.deadline')} requiredLabel={requiredLabel} optionalLabel={optionalLabel}>
                           <select value={form.deadline} onChange={(e) => update('deadline', e.target.value)}>
-                            <option>Flexible</option>
-                            <option>Specific date</option>
-                            <option>Rush</option>
+                            <option value="Flexible">{t('order.deadlines.Flexible')}</option>
+                            <option value="Specific date">{t('order.deadlines.Specific date')}</option>
+                            <option value="Rush">{t('order.deadlines.Rush')}</option>
                           </select>
                         </Field>
                       </div>
-
                       <div className="space-y-2">
-                        <div className="flex items-center gap-2 font-black text-lavender">Background <Badge required /></div>
+                        <div className="flex items-center gap-2 font-black text-lavender">{t('order.fields.background')} <Badge required requiredLabel={requiredLabel} optionalLabel={optionalLabel} /></div>
                         <div className="grid gap-3 md:grid-cols-2">
-                          <ChoiceCard selected={form.background === 'None/simple'} title="None / simple" description="Clean soft backdrop" onClick={() => update('background', 'None/simple')} />
-                          <ChoiceCard selected={form.background === 'Complex'} title="Complex" description="Detailed scene background" meta="From $10 / IDR 50k" onClick={() => update('background', 'Complex')} />
+                          <ChoiceCard selected={form.background === 'None/simple'} title={t('order.backgrounds.simple')} description={t('order.backgrounds.simpleDesc')} onClick={() => update('background', 'None/simple')} />
+                          <ChoiceCard selected={form.background === 'Complex'} title={t('order.backgrounds.complex')} description={t('order.backgrounds.complexDesc')} meta={t('order.backgrounds.complexMeta')} onClick={() => update('background', 'Complex')} />
                         </div>
                       </div>
-
                       <div className="space-y-2">
-                        <div className="flex items-center gap-2 font-black text-lavender">Usage <Badge required /></div>
+                        <div className="flex items-center gap-2 font-black text-lavender">{t('order.fields.usage')} <Badge required requiredLabel={requiredLabel} optionalLabel={optionalLabel} /></div>
                         <div className="grid gap-3 md:grid-cols-2">
-                          <ChoiceCard selected={form.usage === 'Personal'} title="Personal" description="Private / personal use" onClick={() => update('usage', 'Personal')} />
-                          <ChoiceCard selected={form.usage === 'Commercial discussion needed'} title="Commercial discussion" description="Talk first for commercial use" onClick={() => update('usage', 'Commercial discussion needed')} />
+                          <ChoiceCard selected={form.usage === 'Personal'} title={t('order.usages.personal')} description={t('order.usages.personalDesc')} onClick={() => update('usage', 'Personal')} />
+                          <ChoiceCard selected={form.usage === 'Commercial discussion needed'} title={t('order.usages.commercial')} description={t('order.usages.commercialDesc')} onClick={() => update('usage', 'Commercial discussion needed')} />
                         </div>
                       </div>
-
                       <div className="space-y-2">
-                        <div className="flex items-center gap-2 font-black text-lavender">Payment Method <Badge required /></div>
+                        <div className="flex items-center gap-2 font-black text-lavender">{t('order.fields.paymentMethod')} <Badge required requiredLabel={requiredLabel} optionalLabel={optionalLabel} /></div>
                         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                          <ChoiceCard selected={form.paymentMethod === 'Mandiri'} title="Mandiri" description="Bank transfer" onClick={() => update('paymentMethod', 'Mandiri')} />
-                          <ChoiceCard selected={form.paymentMethod === 'Dana'} title="Dana" description="Local ID payment" onClick={() => update('paymentMethod', 'Dana')} />
-                          <ChoiceCard selected={form.paymentMethod === 'PayPal'} title="PayPal" description="International payment" onClick={() => update('paymentMethod', 'PayPal')} />
-                          <ChoiceCard selected={form.paymentMethod === 'Other'} title="Other" description="Discuss with RinnOZ" onClick={() => update('paymentMethod', 'Other')} />
+                          {(['Mandiri', 'Dana', 'PayPal', 'Other'] as const).map((item) => (
+                            <ChoiceCard key={item} selected={form.paymentMethod === item} title={item} description={t(`order.payments.${item}`)} onClick={() => update('paymentMethod', item)} />
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -430,26 +425,19 @@ export function OrderModal() {
 
                   {step === 2 && (
                     <div className="grid gap-4 md:grid-cols-2">
-                      <Field label="Character Description" required error={fieldError('characterDescription')} help="Describe the character, pose idea, expression, outfit, or what you want RinnOZ to draw.">
+                      <Field label={t('order.fields.characterDescription')} required error={fieldError('characterDescription')} help={t('order.helpers.description')} requiredLabel={requiredLabel} optionalLabel={optionalLabel}>
                         <textarea required value={form.characterDescription} onBlur={() => setTouched((x) => ({ ...x, characterDescription: true }))} onChange={(e) => update('characterDescription', e.target.value)} />
                       </Field>
-                      <Field label="Personality / Lore / Story">
+                      <Field label={t('order.fields.lore')} requiredLabel={requiredLabel} optionalLabel={optionalLabel}>
                         <textarea value={form.lore} onChange={(e) => update('lore', e.target.value)} />
                       </Field>
-                      <Field label="Design / Accessories">
+                      <Field label={t('order.fields.design')} requiredLabel={requiredLabel} optionalLabel={optionalLabel}>
                         <textarea value={form.design} onChange={(e) => update('design', e.target.value)} />
                       </Field>
-                      <Field
-                        label="Reference Links"
-                        help="File upload is temporarily disabled. For now, attach files manually in your email app or paste reference links here."
-                      >
-                        <textarea
-                          placeholder="Paste Google Drive, Toyhouse, Pinterest board, Instagram/X post, image links, or any reference URLs here."
-                          value={form.references}
-                          onChange={(e) => update('references', e.target.value)}
-                        />
+                      <Field label={t('order.fields.references')} help={t('order.helpers.references')} requiredLabel={requiredLabel} optionalLabel={optionalLabel}>
+                        <textarea placeholder={t('order.helpers.referencesPlaceholder')} value={form.references} onChange={(e) => update('references', e.target.value)} />
                       </Field>
-                      <Field label="Additional Notes">
+                      <Field label={t('order.fields.notes')} requiredLabel={requiredLabel} optionalLabel={optionalLabel}>
                         <textarea value={form.notes} onChange={(e) => update('notes', e.target.value)} />
                       </Field>
                     </div>
@@ -460,16 +448,14 @@ export function OrderModal() {
                       <div className="space-y-4">
                         {!validation.valid ? (
                           <div className="rounded-3xl border border-rose/30 bg-rose/10 p-4">
-                            <p className="font-black text-rose">Please complete required details first.</p>
-                            <p className="mt-2 text-sm text-cream/75">
-                              {missingReview.length} required field{missingReview.length === 1 ? '' : 's'} {missingReview.length === 1 ? 'is' : 'are'} missing:
-                            </p>
+                            <p className="font-black text-rose">{t('order.review.incompleteTitle')}</p>
+                            <p className="mt-2 text-sm text-cream/75">{t('order.review.incompleteCount', { count: missingReview.length })}</p>
                             <ul className="mt-3 space-y-2">
                               {missingReview.map((err) => (
                                 <li key={`${err.field}-${err.message}`} className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm">
                                   <span>{err.label}</span>
                                   <button type="button" className="btn btn-ghost px-3 py-1 text-xs" onClick={() => setStep(err.step - 1)}>
-                                    Go to Step {err.step}
+                                    {t('order.review.goToStep', { step: err.step })}
                                   </button>
                                 </li>
                               ))}
@@ -477,33 +463,33 @@ export function OrderModal() {
                           </div>
                         ) : (
                           <div className="space-y-3">
-                            <SummaryGroup title="Client">
-                              <SummaryRow label="Name / Handle" value={form.name} required />
-                              <SummaryRow label="Preferred Contact" value={form.preferredContact} required />
-                              <SummaryRow label="Contact" value={form.contactLink} required />
-                              <SummaryRow label="Email" value={form.email || 'Not provided'} />
+                            <SummaryGroup title={t('order.review.groups.client')}>
+                              <SummaryRow label={t('order.fields.name')} value={form.name} required missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.fields.preferredContact')} value={form.preferredContact} required missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.review.rows.contact')} value={form.contactLink} required missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.fields.email')} value={form.email || t('common.notProvided')} missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
                             </SummaryGroup>
-                            <SummaryGroup title="Commission">
-                              <SummaryRow label="Style" value={form.commissionStyle} required />
-                              <SummaryRow label="Type / Crop" value={form.type} required />
-                              <SummaryRow label="Character Count" value={form.characterCount} required />
-                              <SummaryRow label="Background" value={form.background} required />
-                              <SummaryRow label="Usage" value={form.usage} required />
-                              <SummaryRow label="Payment" value={form.paymentMethod} required />
-                              <SummaryRow label="Deadline" value={form.deadline || 'Flexible'} />
+                            <SummaryGroup title={t('order.review.groups.commission')}>
+                              <SummaryRow label={t('order.fields.style')} value={form.commissionStyle} required missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.fields.type')} value={form.type} required missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.fields.characterCount')} value={form.characterCount} required missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.fields.background')} value={form.background} required missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.fields.usage')} value={form.usage} required missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.review.rows.payment')} value={form.paymentMethod} required missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.review.rows.deadline')} value={form.deadline || t('common.flexible')} missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
                             </SummaryGroup>
-                            <SummaryGroup title="Details">
-                              <SummaryRow label="Character Description" value={form.characterDescription} required />
-                              <SummaryRow label="Personality / Lore" value={form.lore || 'Not provided'} />
-                              <SummaryRow label="Design / Accessories" value={form.design || 'Not provided'} />
-                              <SummaryRow label="Additional Notes" value={form.notes || 'Not provided'} />
+                            <SummaryGroup title={t('order.review.groups.details')}>
+                              <SummaryRow label={t('order.fields.characterDescription')} value={form.characterDescription} required missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.review.rows.personality')} value={form.lore || t('common.notProvided')} missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.review.rows.design')} value={form.design || t('common.notProvided')} missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.review.rows.notes')} value={form.notes || t('common.notProvided')} missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
                             </SummaryGroup>
-                            <SummaryGroup title="References">
-                              <SummaryRow label="Reference Links" value={form.references || 'Not provided'} />
-                              <SummaryRow label="Manual Files" value="Attach manually in your email app if needed." />
+                            <SummaryGroup title={t('order.review.groups.references')}>
+                              <SummaryRow label={t('order.review.rows.referenceLinks')} value={form.references || t('common.notProvided')} missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
+                              <SummaryRow label={t('order.review.rows.manualFiles')} value={t('order.review.rows.manualFilesValue')} missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
                             </SummaryGroup>
-                            <SummaryGroup title="Estimate">
-                              <SummaryRow label="Estimated Base" value={est.label} />
+                            <SummaryGroup title={t('order.review.groups.estimate')}>
+                              <SummaryRow label={t('order.review.rows.estimatedBase')} value={est.label} missingLabel={t('common.missingRequired')} notProvided={t('common.notProvided')} />
                             </SummaryGroup>
                           </div>
                         )}
@@ -511,7 +497,7 @@ export function OrderModal() {
 
                       <div className="space-y-3">
                         {submitState === 'mailto-opened' ? (
-                          <OrderStatusBanner title="Email draft opened with your order summary." detail="Attach image files manually in your email app if needed." />
+                          <OrderStatusBanner title={t('order.review.draftOpened')} detail={t('order.review.attachManual')} />
                         ) : null}
 
                         <label className="flex gap-3 rounded-3xl border border-white/10 bg-white/5 p-4 text-cream/80">
@@ -526,28 +512,28 @@ export function OrderModal() {
                           />
                           <span className="space-y-2">
                             <span className="block">
-                              I agree to RinnOZ <a href="#terms" className="text-lavender underline">Terms of Service</a>.
+                              {t('order.review.agree')} <a href="#terms" className="text-lavender underline">{t('order.review.termsLink')}</a>.
                             </span>
-                            <Badge required />
+                            <Badge required requiredLabel={requiredLabel} optionalLabel={optionalLabel} />
                           </span>
                         </label>
                         {fieldError('terms') ? <p className="text-sm font-bold text-rose">{fieldError('terms')}</p> : null}
 
                         {!validation.valid ? (
                           <button type="button" className="btn btn-primary w-full" onClick={jumpToFirstInvalid}>
-                            Complete Required Fields
+                            {t('order.review.completeRequired')}
                           </button>
                         ) : (
                           <button type="button" className="btn btn-primary w-full" onClick={submitOrder}>
-                            Open Email Draft to RinnOZ
+                            {t('order.review.openDraft')}
                           </button>
                         )}
 
                         <button type="button" className="btn btn-ghost w-full" onClick={() => navigator.clipboard.writeText(`${subject}\n\n${body}`)}>
-                          Copy Summary
+                          {t('order.review.copySummary')}
                         </button>
                         <a className="btn btn-ghost w-full" href={mailtoUrl}>
-                          Email Manually
+                          {t('order.review.emailManually')}
                         </a>
                         <div className="grid grid-cols-3 gap-2">
                           <a className="btn btn-ghost" href={instagramUrl} target="_blank" rel="noreferrer">IG</a>
@@ -564,14 +550,14 @@ export function OrderModal() {
 
                 <div className="sticky bottom-0 flex items-center justify-between border-t border-white/10 bg-[#0b0618]/92 px-5 py-4 backdrop-blur-xl">
                   <button type="button" className="btn btn-ghost" disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))}>
-                    ← Back
+                    {t('common.back')}
                   </button>
                   {step < 3 ? (
                     <button type="button" className="btn btn-primary" onClick={goNext}>
-                      Next →
+                      {t('common.next')}
                     </button>
                   ) : (
-                    <span className="text-sm text-cream/45">Review & open email draft</span>
+                    <span className="text-sm text-cream/45">{t('order.review.footerHint')}</span>
                   )}
                 </div>
               </section>

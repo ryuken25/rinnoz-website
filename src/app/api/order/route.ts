@@ -43,7 +43,7 @@ function normalizeForm(raw: Record<string, unknown>): OrderForm {
     design: clean(raw.design),
     references: clean(raw.references),
     notes: clean(raw.notes),
-    language: clean(raw.language) === 'id' ? 'id' : 'en',
+    language: clean(raw.language) === 'en' ? 'en' : 'id',
     source: clean(raw.source) || 'website',
     tos: raw.tos === true || clean(raw.tos) === 'yes',
     website: clean(raw.website),
@@ -174,7 +174,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  const validation = validateOrder(form, attachmentMeta, form.tos);
+  const validation = validateOrder(form, attachmentMeta, form.tos, form.language);
   if (!validation.valid) {
     return NextResponse.json(
       {
@@ -189,9 +189,9 @@ export async function POST(req: NextRequest) {
 
   const to = process.env.ORDER_EMAIL_TO || getOrderEmailTo();
   const from = process.env.ORDER_EMAIL_FROM || process.env.SMTP_FROM || 'commissions@rinnoz.vercel.app';
-  const subject = subjectOverride || buildOrderSubject(form);
+  const subject = subjectOverride || buildOrderSubject(form, form.language);
   // TODO: Re-enable attachment-aware email body after SMTP/Resend is configured.
-  const text = bodyOverride || buildOrderEmailBody(form);
+  const text = bodyOverride || buildOrderEmailBody(form, '', form.language);
   const mailtoUrl = mailtoOverride || buildMailtoUrl(to, subject, text);
   const replyTo = form.email || undefined;
 

@@ -1,3 +1,5 @@
+import type { Locale } from '@/i18n/config';
+import { dictionaries } from '@/i18n/dictionaries';
 import type { OrderAttachmentMeta, OrderForm, OrderValidationError, OrderValidationResult } from '@/types/order';
 
 // TODO: Re-enable reference file uploads after SMTP or Resend is configured.
@@ -11,24 +13,20 @@ export const ALLOWED_TYPES = [
   'application/pdf',
 ] as const;
 
-const labels: Record<string, string> = {
-  name: 'Name / Handle',
-  preferredContact: 'Preferred Contact',
-  contactLink: 'Contact Username / Link',
-  email: 'Email',
-  commissionStyle: 'Style',
-  type: 'Type / Crop',
-  characterCount: 'Character Count',
-  background: 'Background',
-  usage: 'Usage',
-  paymentMethod: 'Payment Method',
-  characterDescription: 'Character Description',
-  terms: 'Terms of Service',
-  attachments: 'Attachments',
-};
-
 function clean(v: unknown) {
   return String(v ?? '').trim();
+}
+
+function errT(locale: Locale, key: string) {
+  const dict = dictionaries[locale] as any;
+  const en = dictionaries.en as any;
+  return dict?.order?.errors?.[key] || en?.order?.errors?.[key] || key;
+}
+
+function labelT(locale: Locale, key: string) {
+  const dict = dictionaries[locale] as any;
+  const en = dictionaries.en as any;
+  return dict?.order?.fields?.[key] || en?.order?.fields?.[key] || key;
 }
 
 export function isValidEmail(email: string) {
@@ -36,56 +34,43 @@ export function isValidEmail(email: string) {
 }
 
 export function validateOrderFiles(files: OrderAttachmentMeta[]): OrderValidationError[] {
-  // Kept for future SMTP/Resend attachment flow.
-  const errors: OrderValidationError[] = [];
-  if (files.length > MAX_FILES) {
-    errors.push({ field: 'attachments', step: 3, message: `Max ${MAX_FILES} files allowed.`, label: labels.attachments });
-  }
-  for (const file of files) {
-    if (!ALLOWED_TYPES.includes(file.type as (typeof ALLOWED_TYPES)[number])) {
-      errors.push({ field: 'attachments', step: 3, message: `${file.name}: unsupported file type.`, label: labels.attachments });
-    }
-    if (file.size > MAX_FILE_SIZE) {
-      errors.push({ field: 'attachments', step: 3, message: `${file.name}: max 8 MB per file.`, label: labels.attachments });
-    }
-  }
-  return errors;
+  void files;
+  return [];
 }
 
 export function validateOrder(
   form: OrderForm,
   attachments: OrderAttachmentMeta[] = [],
   termsAccepted = form.tos,
+  locale: Locale = form.language || 'id',
 ): OrderValidationResult {
   const errors: OrderValidationError[] = [];
-
-  if (!clean(form.name)) errors.push({ field: 'name', step: 1, message: 'Name / handle is required.', label: labels.name });
-  if (!clean(form.preferredContact)) errors.push({ field: 'preferredContact', step: 1, message: 'Preferred contact is required.', label: labels.preferredContact });
-  if (!clean(form.contactLink)) errors.push({ field: 'contactLink', step: 1, message: 'Contact username/link is required.', label: labels.contactLink });
-  if (form.preferredContact === 'Email' && !isValidEmail(form.email)) {
-    errors.push({ field: 'email', step: 1, message: 'A valid email is required when Email is your preferred contact.', label: labels.email });
-  } else if (clean(form.email) && !isValidEmail(form.email)) {
-    errors.push({ field: 'email', step: 1, message: 'Please enter a valid email address.', label: labels.email });
-  }
-
-  if (!clean(form.commissionStyle)) errors.push({ field: 'commissionStyle', step: 2, message: 'Style is required.', label: labels.commissionStyle });
-  if (!clean(form.type)) errors.push({ field: 'type', step: 2, message: 'Type / crop is required.', label: labels.type });
-  if (!clean(form.characterCount) || Number(form.characterCount) < 1) {
-    errors.push({ field: 'characterCount', step: 2, message: 'Character count must be at least 1.', label: labels.characterCount });
-  }
-  if (!clean(form.background)) errors.push({ field: 'background', step: 2, message: 'Background is required.', label: labels.background });
-  if (!clean(form.usage)) errors.push({ field: 'usage', step: 2, message: 'Usage is required.', label: labels.usage });
-  if (!clean(form.paymentMethod)) errors.push({ field: 'paymentMethod', step: 2, message: 'Payment method is required.', label: labels.paymentMethod });
-
-  if (!clean(form.characterDescription)) {
-    errors.push({ field: 'characterDescription', step: 3, message: 'Character description is required.', label: labels.characterDescription });
-  }
-
-  // Upload currently disabled on frontend; ignore attachments in validation for now.
   void attachments;
 
+  if (!clean(form.name)) errors.push({ field: 'name', step: 1, message: errT(locale, 'name'), label: labelT(locale, 'name') });
+  if (!clean(form.preferredContact)) errors.push({ field: 'preferredContact', step: 1, message: errT(locale, 'preferredContact'), label: labelT(locale, 'preferredContact') });
+  if (!clean(form.contactLink)) errors.push({ field: 'contactLink', step: 1, message: errT(locale, 'contactLink'), label: labelT(locale, 'contactLink') });
+  if (form.preferredContact === 'Email' && !isValidEmail(form.email)) {
+    errors.push({ field: 'email', step: 1, message: errT(locale, 'emailRequired'), label: labelT(locale, 'email') });
+  } else if (clean(form.email) && !isValidEmail(form.email)) {
+    errors.push({ field: 'email', step: 1, message: errT(locale, 'emailInvalid'), label: labelT(locale, 'email') });
+  }
+
+  if (!clean(form.commissionStyle)) errors.push({ field: 'commissionStyle', step: 2, message: errT(locale, 'commissionStyle'), label: labelT(locale, 'style') });
+  if (!clean(form.type)) errors.push({ field: 'type', step: 2, message: errT(locale, 'type'), label: labelT(locale, 'type') });
+  if (!clean(form.characterCount) || Number(form.characterCount) < 1) {
+    errors.push({ field: 'characterCount', step: 2, message: errT(locale, 'characterCount'), label: labelT(locale, 'characterCount') });
+  }
+  if (!clean(form.background)) errors.push({ field: 'background', step: 2, message: errT(locale, 'background'), label: labelT(locale, 'background') });
+  if (!clean(form.usage)) errors.push({ field: 'usage', step: 2, message: errT(locale, 'usage'), label: labelT(locale, 'usage') });
+  if (!clean(form.paymentMethod)) errors.push({ field: 'paymentMethod', step: 2, message: errT(locale, 'paymentMethod'), label: labelT(locale, 'paymentMethod') });
+
+  if (!clean(form.characterDescription)) {
+    errors.push({ field: 'characterDescription', step: 3, message: errT(locale, 'characterDescription'), label: labelT(locale, 'characterDescription') });
+  }
+
   if (!termsAccepted) {
-    errors.push({ field: 'terms', step: 4, message: 'Please agree to the Terms of Service before submitting.', label: labels.terms });
+    errors.push({ field: 'terms', step: 4, message: errT(locale, 'terms'), label: labelT(locale, 'terms') });
   }
 
   const missingByStep: OrderValidationResult['missingByStep'] = { 1: [], 2: [], 3: [], 4: [] };
@@ -97,21 +82,4 @@ export function validateOrder(
     firstInvalidStep: errors[0]?.step ?? null,
     missingByStep,
   };
-}
-
-export function fieldIsRequired(form: OrderForm, field: string) {
-  if (field === 'email') return form.preferredContact === 'Email';
-  return [
-    'name',
-    'preferredContact',
-    'contactLink',
-    'commissionStyle',
-    'type',
-    'characterCount',
-    'background',
-    'usage',
-    'paymentMethod',
-    'characterDescription',
-    'terms',
-  ].includes(field);
 }

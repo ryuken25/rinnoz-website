@@ -1,4 +1,6 @@
-export type OrderLang = 'en' | 'id';
+import type { Locale } from '@/i18n/config';
+
+export type OrderLang = Locale;
 export type PreferredContact = 'Instagram' | 'Discord' | 'X' | 'Email' | 'Other';
 
 export type OrderForm = {
@@ -21,7 +23,7 @@ export type OrderForm = {
   language: OrderLang;
   source: string;
   tos: boolean;
-  website?: string; // honeypot
+  website?: string;
 };
 
 export type OrderAttachmentMeta = {

@@ -1,12 +1,15 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { useNavHeight } from '@/hooks/useNavHeight';
+import { useI18n } from '@/i18n/useI18n';
+import { LanguageToggle } from './LanguageToggle';
 
-const links = ['home', 'terms', 'pricing', 'artworks', 'process', 'faq', 'order', 'socials'];
+const linkIds = ['home', 'terms', 'pricing', 'artworks', 'process', 'faq', 'order', 'socials'] as const;
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('home');
+  const { t } = useI18n();
   useNavHeight();
 
   useEffect(() => {
@@ -15,7 +18,7 @@ export function Navbar() {
         if (e.isIntersecting) setActive(e.target.id);
       });
     }, { rootMargin: '-30% 0px -58% 0px' });
-    links.forEach((id) => {
+    linkIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) obs.observe(el);
     });
@@ -30,28 +33,34 @@ export function Navbar() {
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-4">
         <a href="#home" className="whitespace-nowrap font-display text-xl font-bold text-cream sm:text-2xl">☾ RinnOZ</a>
         <div className="hidden min-w-0 items-center justify-center gap-1 lg:flex">
-          {links.map((l) => (
+          {linkIds.map((l) => (
             <a
               key={l}
               href={`#${l}`}
-              className={`rounded-full px-3 py-2 text-sm font-bold capitalize transition ${active === l ? 'bg-white/12 text-lavender' : 'text-cream/65 hover:text-cream'}`}
+              className={`rounded-full px-3 py-2 text-sm font-bold transition ${active === l ? 'bg-white/12 text-lavender' : 'text-cream/65 hover:text-cream'}`}
             >
-              {l}
+              {t(`nav.${l}`)}
             </a>
           ))}
         </div>
         <div className="flex items-center justify-end gap-2">
-          <a href="#order" className="btn btn-primary px-3 text-sm sm:inline-flex sm:px-4">Order</a>
-          <button type="button" aria-label="Toggle menu" onClick={() => setOpen((v) => !v)} className="btn btn-ghost px-3 text-sm lg:hidden">
-            Menu
+          <div className="hidden sm:block">
+            <LanguageToggle compact />
+          </div>
+          <a href="#order" className="btn btn-primary px-3 text-sm sm:inline-flex sm:px-4">{t('nav.orderCta')}</a>
+          <button type="button" aria-label={t('nav.menu')} onClick={() => setOpen((v) => !v)} className="btn btn-ghost px-3 text-sm lg:hidden">
+            {t('nav.menu')}
           </button>
         </div>
       </div>
       {open && (
         <div className="mx-auto mt-3 grid max-w-7xl gap-2 rounded-3xl border border-white/10 bg-midnight/95 p-3 lg:hidden">
-          {links.map((l) => (
-            <a onClick={() => setOpen(false)} key={l} href={`#${l}`} className="rounded-2xl px-4 py-3 text-lg font-bold capitalize text-cream/85 hover:bg-white/10">
-              {l}
+          <div className="mb-1 flex justify-end">
+            <LanguageToggle compact />
+          </div>
+          {linkIds.map((l) => (
+            <a onClick={() => setOpen(false)} key={l} href={`#${l}`} className="rounded-2xl px-4 py-3 text-lg font-bold text-cream/85 hover:bg-white/10">
+              {t(`nav.${l}`)}
             </a>
           ))}
         </div>

@@ -1,3 +1,5 @@
+import type { Locale } from '@/i18n/config';
+import { dictionaries } from '@/i18n/dictionaries';
 import type { OrderForm } from '@/types/order';
 
 const ORDER_EMAIL_TO = 'takayuki.rinnozuki@gmail.com';
@@ -6,66 +8,77 @@ function clean(v: unknown) {
   return String(v ?? '').trim();
 }
 
-function show(value: string, required = false) {
-  const v = clean(value);
-  if (v) return v;
-  return required ? 'Missing required' : 'Not provided';
+function mailT(locale: Locale, key: string, params?: Record<string, string | number>) {
+  const dict = dictionaries[locale] as Record<string, any>;
+  const en = dictionaries.en as Record<string, any>;
+  const value = dict?.mail?.[key] ?? en?.mail?.[key] ?? key;
+  if (typeof value !== 'string') return key;
+  if (!params) return value;
+  return value.replace(/\{(\w+)\}/g, (_, k: string) => String(params[k] ?? `{${k}}`));
 }
 
-export function buildOrderSubject(form: OrderForm) {
+function show(value: string, locale: Locale, required = false) {
+  const v = clean(value);
+  if (v) return v;
+  return required ? mailT(locale, 'notProvided') : mailT(locale, 'notProvided');
+}
+
+export function buildOrderSubject(form: OrderForm, locale: Locale = form.language || 'id') {
   const name = clean(form.name) || 'Client';
   const style = clean(form.commissionStyle) || 'Commission';
   const type = clean(form.type) || 'Artwork';
-  return `Commission Order — RinnOZ — ${style} ${type} — ${name}`;
+  return mailT(locale, 'subject', { style, type, name });
 }
 
 // TODO: Re-enable reference file uploads after SMTP or Resend is configured.
-export function buildOrderEmailBody(form: OrderForm, estimateLabel = '') {
+export function buildOrderEmailBody(form: OrderForm, estimateLabel = '', locale: Locale = form.language || 'id') {
+  const np = mailT(locale, 'notProvided');
+  const deadline = clean(form.deadline) || mailT(locale, 'flexible');
   const lines = [
-    'Hello RinnOZ,',
+    mailT(locale, 'hello'),
     '',
-    'I would like to order a commission. Here are the details:',
+    mailT(locale, 'intro'),
     '',
-    'CLIENT',
-    `Name / Handle: ${show(form.name, true)}`,
-    `Preferred Contact: ${show(form.preferredContact, true)}`,
-    `Contact Username / Link: ${show(form.contactLink, true)}`,
-    `Email: ${show(form.email)}`,
+    mailT(locale, 'client'),
+    `${mailT(locale, 'name')}: ${show(form.name, locale, true)}`,
+    `${mailT(locale, 'preferredContact')}: ${show(form.preferredContact, locale, true)}`,
+    `${mailT(locale, 'contactLink')}: ${show(form.contactLink, locale, true)}`,
+    `${mailT(locale, 'email')}: ${clean(form.email) || np}`,
     '',
-    'COMMISSION',
-    `Style: ${show(form.commissionStyle, true)}`,
-    `Type / Crop: ${show(form.type, true)}`,
-    `Character Count: ${show(form.characterCount, true)}`,
-    `Background: ${show(form.background, true)}`,
-    `Usage: ${show(form.usage, true)}`,
-    `Payment Method: ${show(form.paymentMethod, true)}`,
-    `Deadline / Rush: ${show(form.deadline) === 'Not provided' ? 'Flexible' : show(form.deadline)}`,
+    mailT(locale, 'commission'),
+    `${mailT(locale, 'style')}: ${show(form.commissionStyle, locale, true)}`,
+    `${mailT(locale, 'type')}: ${show(form.type, locale, true)}`,
+    `${mailT(locale, 'characterCount')}: ${show(form.characterCount, locale, true)}`,
+    `${mailT(locale, 'background')}: ${show(form.background, locale, true)}`,
+    `${mailT(locale, 'usage')}: ${show(form.usage, locale, true)}`,
+    `${mailT(locale, 'paymentMethod')}: ${show(form.paymentMethod, locale, true)}`,
+    `${mailT(locale, 'deadline')}: ${deadline}`,
     '',
-    'DETAILS',
-    'Character Description:',
-    show(form.characterDescription, true),
+    mailT(locale, 'details'),
+    `${mailT(locale, 'characterDescription')}:`,
+    clean(form.characterDescription) || np,
     '',
-    'Personality / Lore / Story:',
-    show(form.lore),
+    `${mailT(locale, 'lore')}:`,
+    clean(form.lore) || np,
     '',
-    'Design / Accessories:',
-    show(form.design),
+    `${mailT(locale, 'design')}:`,
+    clean(form.design) || np,
     '',
-    'REFERENCES',
-    'Reference Links:',
-    show(form.references),
+    mailT(locale, 'references'),
+    `${mailT(locale, 'referenceLinks')}:`,
+    clean(form.references) || np,
     '',
-    'Manual Files:',
-    'If you have image files, please attach them manually in your email app or provide Google Drive / Toyhouse / Pinterest / image links.',
+    `${mailT(locale, 'manualFiles')}:`,
+    mailT(locale, 'manualFilesBody'),
     '',
-    'ADDITIONAL NOTES',
-    show(form.notes),
+    mailT(locale, 'notes'),
+    clean(form.notes) || np,
     '',
-    'ESTIMATE',
-    estimateLabel ? `Estimated Base: ${estimateLabel}` : 'Estimated Base: To be confirmed',
-    'Final price will be confirmed by RinnOZ after reviewing references and complexity.',
+    mailT(locale, 'estimate'),
+    `${mailT(locale, 'estimatedBase')}: ${estimateLabel || np}`,
+    mailT(locale, 'finalPrice'),
     '',
-    'Thank you!',
+    mailT(locale, 'thanks'),
   ];
   return lines.join('\n');
 }
