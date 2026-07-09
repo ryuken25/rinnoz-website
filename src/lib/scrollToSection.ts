@@ -1,8 +1,15 @@
 export function getNavOffsetPx() {
-  if (typeof window === 'undefined') return 88;
-  const raw = getComputedStyle(document.documentElement).getPropertyValue('--nav-height') || '88';
+  if (typeof window === 'undefined') return 76;
+  const raw = getComputedStyle(document.documentElement).getPropertyValue('--nav-height') || '76';
   const parsed = Number.parseFloat(raw);
-  return Number.isFinite(parsed) ? parsed : 88;
+  return Number.isFinite(parsed) ? parsed : 76;
+}
+
+export function scrollExtraForId(id: string) {
+  if (id === 'artworks') return 48;
+  if (id === 'artworks-story-stage') return 56;
+  if (id === 'artworks-browse') return 40;
+  return 32;
 }
 
 export function scrollToSection(id: string, behavior: ScrollBehavior = 'smooth') {
@@ -11,7 +18,7 @@ export function scrollToSection(id: string, behavior: ScrollBehavior = 'smooth')
   if (!target) return;
 
   const navHeight = getNavOffsetPx();
-  const extra = cleanId === 'artworks' ? 56 : 32;
+  const extra = scrollExtraForId(cleanId);
   const y = target.getBoundingClientRect().top + window.scrollY - navHeight - extra;
 
   window.history.pushState(null, '', `#${cleanId}`);

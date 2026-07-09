@@ -1,41 +1,37 @@
 'use client';
 
 import { useEffect } from 'react';
-import { getNavOffsetPx } from '@/lib/scrollToSection';
+import { useI18n } from '@/i18n/useI18n';
+import { getNavOffsetPx, scrollExtraForId } from '@/lib/scrollToSection';
 
 export function useHashScrollOffset() {
-  useEffect(() => {
-    const scrollToHash = () => {
-      const hash = window.location.hash;
-      if (!hash || hash.length < 2) return;
+  const { locale } = useI18n();
 
-      const target = document.querySelector(hash);
+  useEffect(() => {
+    const correct = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) return;
+
+      const target = document.getElementById(hash);
       if (!target) return;
 
       const navHeight = getNavOffsetPx();
-      const extra = hash === '#artworks' ? 56 : 32;
+      const extra = scrollExtraForId(hash);
       const y = target.getBoundingClientRect().top + window.scrollY - navHeight - extra;
 
-      window.scrollTo({
-        top: Math.max(0, y),
-        behavior: 'auto',
-      });
+      window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
     };
 
-    // Native hash can fire before nav height is measured.
-    const t1 = window.setTimeout(scrollToHash, 50);
-    const t2 = window.setTimeout(scrollToHash, 250);
-    const t3 = window.setTimeout(scrollToHash, 600);
+    // Native hash can fire before nav height / fonts / locale hydrate.
+    const timers = [50, 180, 420, 800, 1200].map((ms) => window.setTimeout(correct, ms));
 
-    window.addEventListener('hashchange', scrollToHash);
-    window.addEventListener('load', scrollToHash);
+    window.addEventListener('hashchange', correct);
+    window.addEventListener('load', correct);
 
     return () => {
-      window.clearTimeout(t1);
-      window.clearTimeout(t2);
-      window.clearTimeout(t3);
-      window.removeEventListener('hashchange', scrollToHash);
-      window.removeEventListener('load', scrollToHash);
+      timers.forEach((id) => window.clearTimeout(id));
+      window.removeEventListener('hashchange', correct);
+      window.removeEventListener('load', correct);
     };
-  }, []);
+  }, [locale]);
 }
