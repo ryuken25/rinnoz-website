@@ -13,11 +13,21 @@ npm run dev
 ```env
 ORDER_EMAIL_TO=takayuki.rinnozuki@gmail.com
 ORDER_EMAIL_FROM=commissions@yourdomain.com
-RESEND_API_KEY=your_key_here
-# or SMTP_HOST / SMTP_PORT / SMTP_USER / SMTP_PASS
+RESEND_API_KEY=
+
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASS=
+SMTP_FROM=
 ```
 
-The `/api/order` route validates the form, rate-limits submissions, uses a honeypot field, sends through Resend or SMTP when configured, and falls back to FormSubmit/mailto if provider config is unavailable.
+## Order flow
+- Step form with clear **Required / Optional** badges
+- No attachments → frontend opens `mailto:` draft with subject + body filled
+- With attachments → `POST /api/order` as `multipart/form-data`
+- If Resend/SMTP is not configured, API returns mailto fallback and asks client to attach files manually
+- Validation + rate-limit + honeypot on `/api/order`
 
 ## Deploy to Vercel
 ```bash
