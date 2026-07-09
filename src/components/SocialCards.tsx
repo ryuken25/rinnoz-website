@@ -4,10 +4,9 @@ import { SectionShell } from './SectionShell';
 
 export function SocialCards(){
   return <SectionShell id="socials" eyebrow="Official links" title="Find RinnOZ around the web">
-    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-      {socials.map(s=><a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="card group flex items-center gap-4 p-5 transition hover:-translate-y-1 hover:border-blush/40">
-        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-white/12 bg-white/[.06] text-lavender shadow-[0_0_24px_rgba(216,198,255,.08)] transition group-hover:border-blush/40 group-hover:bg-white/[.1]"><BrandIcon name={s.label} className="h-6 w-6"/></span>
-        <span className="min-w-0"><b className="block">{s.label}</b><span className="mt-1 block truncate text-sm text-cream/55">{s.href.replace(/^https?:\/\//,'')}</span></span>
+    <div className="grid grid-cols-3 justify-items-center gap-5 sm:grid-cols-5 lg:grid-cols-9 lg:gap-6">
+      {socials.map(s=><a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} title={s.label} className="group grid place-items-center rounded-[1.8rem] p-3 text-cream transition hover:-translate-y-1 hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blush">
+        <BrandIcon name={s.label} className="h-12 w-12 drop-shadow-[0_0_18px_rgba(216,198,255,.26)] transition group-hover:drop-shadow-[0_0_24px_rgba(255,158,216,.55)] sm:h-14 sm:w-14 lg:h-16 lg:w-16"/>
       </a>)}
     </div>
   </SectionShell>
