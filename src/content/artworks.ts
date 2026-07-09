@@ -1,10 +1,30 @@
-export type ArtworkTag = 'Chibi' | 'Anime' | 'Emotes/Stickers' | 'Character Sheet' | 'Background / Scene' | 'Gift / Birthday' | 'Vtuber / Mascot';
-export type Artwork = { id:string; src:string; originalSrc:string; title:string; alt:string; tags:ArtworkTag[]; width:number; height:number; aspect:number; featured?:boolean };
-export const artworkFilters = ['All','Chibi','Anime','Emotes/Stickers','Character Sheet','Background / Scene','Gift / Birthday','Vtuber / Mascot'] as const;
-export const artworks: Artwork[] = [
-  { id:'rinn-commission-collage-01', src:'/rinnozuki/portfolio/artwork-01.jpg', originalSrc:'/rinnozuki/originals/artwork-01.jpg', title:'Anime Character Commission Collage', alt:'Anime artwork collage by RinnOZ', tags:['Anime','Character Sheet'], width:2159, height:1841, aspect:1.173, featured:true },
-  { id:'rinn-commission-collage-02', src:'/rinnozuki/portfolio/artwork-02.jpg', originalSrc:'/rinnozuki/originals/artwork-02.jpg', title:'Chibi & Anime Samples', alt:'Anime and chibi commission collage by RinnOZ', tags:['Chibi','Anime'], width:2160, height:2160, aspect:1, featured:true },
-  { id:'rinn-commission-collage-03', src:'/rinnozuki/portfolio/artwork-03.jpg', originalSrc:'/rinnozuki/originals/artwork-03.jpg', title:'Mascot Character Showcase', alt:'Character commission artwork collage by RinnOZ', tags:['Anime','Vtuber / Mascot'], width:2160, height:2160, aspect:1 },
-  { id:'rinn-commission-collage-04', src:'/rinnozuki/portfolio/artwork-04.jpg', originalSrc:'/rinnozuki/originals/artwork-04.jpg', title:'Illustration & Scene Samples', alt:'Illustration and scene artwork collage by RinnOZ', tags:['Background / Scene','Gift / Birthday'], width:2160, height:2160, aspect:1 },
-  { id:'rinn-sticker-samples-05', src:'/rinnozuki/portfolio/artwork-05.jpg', originalSrc:'/rinnozuki/originals/artwork-05.jpg', title:'Sticker & Emote Samples', alt:'Sticker and character sample artwork by RinnOZ', tags:['Emotes/Stickers','Chibi'], width:815, height:815, aspect:1 },
+export type SocialSource = 'instagram' | 'x' | 'carrd-fallback';
+export type ArtworkFilter = 'All' | 'Anime' | 'Chibi' | 'Mascot / Vtuber' | 'Emotes / Stickers' | 'Scene / Illustration' | 'Recent' | 'Instagram' | 'X';
+export type SocialArtwork = {
+  id: string;
+  source: SocialSource;
+  postUrl: string;
+  createdAt?: string;
+  caption?: string;
+  imageUrl: string;
+  originalUrl?: string;
+  width: number;
+  height: number;
+  aspectRatio: number;
+  tags: string[];
+  title: string;
+  description?: string;
+  isCarousel?: boolean;
+  carouselGroupId?: string;
+  carouselIndex?: number;
+  artScore?: number;
+  isArt: boolean;
+  featured?: boolean;
+};
+export const artworkFilters: ArtworkFilter[] = ['All','Anime','Chibi','Mascot / Vtuber','Emotes / Stickers','Scene / Illustration','Recent','Instagram','X'];
+export const carrdFallbackArtworks: SocialArtwork[] = [
+  { id:'carrd-fallback-01', source:'carrd-fallback', postUrl:'https://rinnoz.carrd.co/#artworks', imageUrl:'/rinnozuki/portfolio/artwork-01.jpg', originalUrl:'/rinnozuki/originals/artwork-01.jpg', title:'Carrd Commission Sheet Backup 01', caption:'Fallback selected commission sheet from Carrd.', description:'Fallback selected commission sheet from Carrd.', tags:['Anime','Scene / Illustration'], width:2159, height:1841, aspectRatio:1.173, isArt:true },
+  { id:'carrd-fallback-02', source:'carrd-fallback', postUrl:'https://rinnoz.carrd.co/#artworks', imageUrl:'/rinnozuki/portfolio/artwork-02.jpg', originalUrl:'/rinnozuki/originals/artwork-02.jpg', title:'Carrd Chibi & Anime Backup', caption:'Fallback chibi/anime sheet from Carrd.', description:'Fallback chibi/anime sheet from Carrd.', tags:['Anime','Chibi'], width:2160, height:2160, aspectRatio:1, isArt:true },
+  { id:'carrd-fallback-03', source:'carrd-fallback', postUrl:'https://rinnoz.carrd.co/#artworks', imageUrl:'/rinnozuki/portfolio/artwork-05.jpg', originalUrl:'/rinnozuki/originals/artwork-05.jpg', title:'Carrd Sticker Backup', caption:'Fallback sticker/emote sample from Carrd.', description:'Fallback sticker/emote sample from Carrd.', tags:['Emotes / Stickers','Chibi'], width:815, height:815, aspectRatio:1, isArt:true },
 ];
+export function sourceLabel(source: SocialSource) { if (source === 'x') return 'X Art'; if (source === 'instagram') return 'Instagram Art'; return 'Carrd fallback'; }

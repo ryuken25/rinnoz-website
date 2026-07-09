@@ -1,0 +1,165 @@
+import type { SocialArtwork } from './artworks';
+export const socialArtworks: SocialArtwork[] = [
+  {
+    "id": "x-2064794850671968291-1",
+    "source": "x",
+    "postUrl": "https://x.com/Rinnozuki24/status/2064794850671968291",
+    "createdAt": "Wed Jun 10 19:40:29 +0000 2026",
+    "caption": "I made an illustration for @dnzrx 's cover!!\n\nhttps://www.youtube.com/watch?v=uFosG5hvHpw&feature=youtu.be \n\nIt\u2019s my first time working on a full background piece without blurring it. I got challenged, and really grateful for the opportunity! Thank you sm!! \ud83d\udc90\n\n#ArtCommission #illustration #\u30c9\u30e9\u30a4\u30d5\u30e9\u30ef\u30fc #\u512a\u91cc",
+    "imageUrl": "/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+    "originalUrl": "/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+    "width": 3840,
+    "height": 3840,
+    "aspectRatio": 1,
+    "tags": [
+      "Anime",
+      "Scene / Illustration"
+    ],
+    "title": "Dry Flower Cover Illustration",
+    "description": "I made an illustration for @dnzrx 's cover!! https://www.youtube.com/watch?v=uFosG5hvHpw&feature=youtu.be ",
+    "isCarousel": false,
+    "carouselIndex": 0,
+    "artScore": 97,
+    "isArt": true,
+    "featured": true
+  },
+  {
+    "id": "x-2024098733991039299-1",
+    "source": "x",
+    "postUrl": "https://x.com/Rinnozuki24/status/2024098733991039299",
+    "createdAt": "Wed Feb 18 12:28:38 +0000 2026",
+    "caption": "I made an illustration for @Zeikou_Ch 's cover again!!     \n\nhttps://youtube.com/watch?v=BEULzT39K2k \n\nThe highlight of this artwork is the background 'cus I colored each light manually hehe. What do you think of the scenery? \ud83c\udf06\ud83d\udcf7\u2728\n\n#ArtCommission #illustration #\u795e\u306f\u30b5\u30a4\u30b3\u30ed\u3092\u632f\u3089\u306a\u3044 #\u591c\u6c38\u5504",
+    "imageUrl": "/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+    "originalUrl": "/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+    "width": 3840,
+    "height": 2160,
+    "aspectRatio": 1.778,
+    "tags": [
+      "Anime",
+      "Scene / Illustration"
+    ],
+    "title": "Night Song Scenic Illustration",
+    "description": "I made an illustration for @Zeikou_Ch 's cover again!!      https://youtube.com/watch?v=BEULzT39K2k ",
+    "isCarousel": false,
+    "carouselIndex": 0,
+    "artScore": 97,
+    "isArt": true,
+    "featured": true
+  },
+  {
+    "id": "x-2017652733084635532-1",
+    "source": "x",
+    "postUrl": "https://x.com/Rinnozuki24/status/2017652733084635532",
+    "createdAt": "Sat Jan 31 17:34:32 +0000 2026",
+    "caption": "I made an illustration for @Tresbienda 's first cover on YouTube!! \n\nhttps://www.youtube.com/watch?v=z8YB7EnMsTE\n\nThank you for trusting me with your project and letting me do some experiment with your commission www\ud83d\udee0\ufe0f\ud83d\ude06\u2728\n\n#ArtCommission #illustration #IRISOUT #KenshiYonezu",
+    "imageUrl": "/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+    "originalUrl": "/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+    "width": 2880,
+    "height": 2160,
+    "aspectRatio": 1.333,
+    "tags": [
+      "Anime",
+      "Scene / Illustration"
+    ],
+    "title": "IRIS OUT Cover Art",
+    "description": "I made an illustration for @Tresbienda 's first cover on YouTube!!  https://www.youtube.com/watch?v=z8YB7EnMsTE",
+    "isCarousel": false,
+    "carouselIndex": 0,
+    "artScore": 97,
+    "isArt": true,
+    "featured": true
+  },
+  {
+    "id": "x-2003998581175603589-1",
+    "source": "x",
+    "postUrl": "https://x.com/Rinnozuki24/status/2003998581175603589",
+    "createdAt": "Thu Dec 25 01:17:48 +0000 2025",
+    "caption": "Thank you for trusting me to make the illustration assets @kenshi2k_ \ud83d\ude06\nAlso Merry Christmas to you all~!! \ud83c\udf84\ud83c\udf1f\u2744\ufe0f\n\nCheck his newest cover!\nhttps://www.youtube.com/watch?v=w-Reopw0Y8Y&list=RDw-Reopw0Y8Y&start_radio=1\n\n#ArtCommission #illustration #fuyunopresent #mosawo",
+    "imageUrl": "/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+    "originalUrl": "/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+    "width": 3840,
+    "height": 2160,
+    "aspectRatio": 1.778,
+    "tags": [
+      "Anime",
+      "Scene / Illustration"
+    ],
+    "title": "Winter Present Illustration Assets",
+    "description": "Thank you for trusting me to make the illustration assets @kenshi2k_ \ud83d\ude06 Also Merry Christmas to you all~!! \ud83c\udf84\ud83c\udf1f\u2744\ufe0f",
+    "isCarousel": false,
+    "carouselIndex": 0,
+    "artScore": 97,
+    "isArt": true,
+    "featured": false
+  },
+  {
+    "id": "x-1984891587219112059-1",
+    "source": "x",
+    "postUrl": "https://x.com/Rinnozuki24/status/1984891587219112059",
+    "createdAt": "Sun Nov 02 07:53:26 +0000 2025",
+    "caption": "Thank you for letting me join this cover project!\ud83d\ude09\nI made an illustration for @Zeikou_Ch\u2019s newest Halloween cover!!\nPlease check him out! \ud83c\udf83\ud83d\udc7b\ud83d\udc80\ud83e\udea6\n\nFull: https://www.youtube.com/watch?v=kp7Ks0iR-bs\n\n#ArtCommission #illustration #SHADOWSHADOW #azari",
+    "imageUrl": "/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+    "originalUrl": "/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": 1.778,
+    "tags": [
+      "Anime",
+      "Scene / Illustration"
+    ],
+    "title": "Halloween Shadow Cover Illustration",
+    "description": "Thank you for letting me join this cover project!\ud83d\ude09 I made an illustration for @Zeikou_Ch\u2019s newest Halloween cover!!",
+    "isCarousel": false,
+    "carouselIndex": 0,
+    "artScore": 97,
+    "isArt": true,
+    "featured": false
+  },
+  {
+    "id": "x-1962047085425139989-1",
+    "source": "x",
+    "postUrl": "https://x.com/Rinnozuki24/status/1962047085425139989",
+    "createdAt": "Sun Aug 31 06:57:32 +0000 2025",
+    "caption": "I made an illustration for @mizu_takami newest cover. Thank you for trusting me on this project!!\ud83d\ude0a\ud83c\udf38 \n\nCheck her beautiful cover on Youtube: \nWasureiji no Kotonoha\u300c\u5fd8\u308c\u3058\u306e\u8a00\u306e\u8449\u300dcover by Mizu Takami\n\n#commissionsopen #illustration #vtuber",
+    "imageUrl": "/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+    "originalUrl": "/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+    "width": 3840,
+    "height": 2160,
+    "aspectRatio": 1.778,
+    "tags": [
+      "Anime",
+      "Mascot / Vtuber",
+      "Scene / Illustration"
+    ],
+    "title": "Moonlit Forest Cover Illustration",
+    "description": "I made an illustration for @mizu_takami newest cover. Thank you for trusting me on this project!!\ud83d\ude0a\ud83c\udf38  Check her beautiful cover on Youtube: ",
+    "isCarousel": false,
+    "carouselIndex": 0,
+    "artScore": 72,
+    "isArt": true,
+    "featured": true
+  },
+  {
+    "id": "x-1949451538193416264-1",
+    "source": "x",
+    "postUrl": "https://x.com/Rinnozuki24/status/1949451538193416264",
+    "createdAt": "Sun Jul 27 12:47:20 +0000 2025",
+    "caption": "Made this in May 2025 (sorry for the spam and late art post)",
+    "imageUrl": "/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+    "originalUrl": "/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+    "width": 2200,
+    "height": 1983,
+    "aspectRatio": 1.109,
+    "tags": [
+      "Anime",
+      "Chibi"
+    ],
+    "title": "Soft Catgirl Original Artwork",
+    "description": "Made this in May 2025 (sorry for the spam and late art post)",
+    "isCarousel": false,
+    "carouselIndex": 0,
+    "artScore": 53,
+    "isArt": true,
+    "featured": true
+  }
+] as SocialArtwork[];
