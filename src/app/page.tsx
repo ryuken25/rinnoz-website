@@ -5,6 +5,7 @@ import { FloatingCta } from '@/components/FloatingCta';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/Hero';
 import { Navbar } from '@/components/Navbar';
+import { OrderModal } from '@/components/OrderModal';
 import { OrderWizard } from '@/components/OrderWizard';
 import { PricingSection } from '@/components/PricingSection';
 import { ProcessTimeline } from '@/components/ProcessTimeline';
@@ -25,6 +26,7 @@ export default function Page() {
     <SocialCards />
     <Footer />
     <FloatingCta />
+    <OrderModal />
     <script dangerouslySetInnerHTML={{ __html: `if(location.hash==='#termsofservice')location.hash='#terms';if(location.hash==='#form')location.hash='#order';if(location.hash==='#pricelist')location.hash='#pricing';` }} />
   </main>;
 }
