@@ -14,7 +14,7 @@ function BoardCard({ kind, items, title }: { kind: 'do' | 'dont'; items: string[
       whileHover={{ y: -6, rotate: good ? -0.4 : 0.4 }}
       className={`card paper-card relative overflow-hidden p-6 ${good ? 'hover:shadow-[0_0_48px_rgba(159,255,210,.16)]' : 'hover:shadow-[0_0_48px_rgba(255,120,189,.16)]'}`}
     >
-      <div className={`absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl ${good ? 'bg-mint/18' : 'bg-rose/18'}`} />
+      <div className={`absolute right-0 top-0 h-36 w-36 rounded-full blur-3xl ${good ? 'bg-mint/18' : 'bg-rose/18'}`} />
       <h3 className={`mb-5 text-2xl font-black ${good ? 'text-mint' : 'text-rose'}`}>{title}</h3>
       <div className="space-y-3">
         {items.map((x, i) => (

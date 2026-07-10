@@ -1,0 +1,3319 @@
+[
+  {
+    "site": "rinnoz",
+    "section": "home",
+    "width": 320,
+    "height": 700,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+        "bytes": 545348
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+        "bytes": 1999582
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+        "bytes": 1251989
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/avatar/rinnozuki-avatar.jpg",
+        "bytes": 28343
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+        "bytes": 426253
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+        "bytes": 984046
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      }
+    ],
+    "m": {
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 345,
+      "innerWidth": 320,
+      "scrollY": 0,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 491,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 343,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 343,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-home-320.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "pricing",
+    "width": 320,
+    "height": 700,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      }
+    ],
+    "m": {
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 345,
+      "innerWidth": 320,
+      "scrollY": 3001,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 491,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 343,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 343,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-pricing-320.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "artworks",
+    "width": 320,
+    "height": 700,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      }
+    ],
+    "m": {
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 345,
+      "innerWidth": 320,
+      "scrollY": 6072,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 491,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 343,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 343,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-artworks-320.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "faq",
+    "width": 320,
+    "height": 700,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      }
+    ],
+    "m": {
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 345,
+      "innerWidth": 320,
+      "scrollY": 9557,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 491,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 343,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 343,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-faq-320.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "order",
+    "width": 320,
+    "height": 700,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 345,
+      "innerWidth": 320,
+      "scrollY": 14945,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 491,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 343,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 343,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-order-320.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "home",
+    "width": 360,
+    "height": 800,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/avatar/rinnozuki-avatar.jpg",
+        "bytes": 28343
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+        "bytes": 1251989
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+        "bytes": 1999582
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+        "bytes": 545348
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+        "bytes": 984046
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+        "bytes": 426253
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      }
+    ],
+    "m": {
+      "docScrollWidth": 360,
+      "bodyScrollWidth": 385,
+      "innerWidth": 360,
+      "scrollY": 0,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 504,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 383,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 383,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-home-360.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "pricing",
+    "width": 360,
+    "height": 800,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      }
+    ],
+    "m": {
+      "docScrollWidth": 360,
+      "bodyScrollWidth": 385,
+      "innerWidth": 360,
+      "scrollY": 2864,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 504,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 383,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 383,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-pricing-360.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "artworks",
+    "width": 360,
+    "height": 800,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      }
+    ],
+    "m": {
+      "docScrollWidth": 360,
+      "bodyScrollWidth": 385,
+      "innerWidth": 360,
+      "scrollY": 5383,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 504,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 383,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 383,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-artworks-360.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "faq",
+    "width": 360,
+    "height": 800,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      }
+    ],
+    "m": {
+      "docScrollWidth": 360,
+      "bodyScrollWidth": 385,
+      "innerWidth": 360,
+      "scrollY": 12069,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 504,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 383,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 383,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-faq-360.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "order",
+    "width": 360,
+    "height": 800,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 360,
+      "bodyScrollWidth": 385,
+      "innerWidth": 360,
+      "scrollY": 14236,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 504,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 383,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 383,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-order-360.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "home",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/avatar/rinnozuki-avatar.jpg",
+        "bytes": 28343
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+        "bytes": 1999582
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+        "bytes": 545348
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+        "bytes": 1251989
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+        "bytes": 984046
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+        "bytes": 426253
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 415,
+      "innerWidth": 390,
+      "scrollY": 0,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 514,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 413,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 413,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-home-390.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "pricing",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 415,
+      "innerWidth": 390,
+      "scrollY": 2770,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 514,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 413,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 413,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-pricing-390.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "artworks",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 415,
+      "innerWidth": 390,
+      "scrollY": 5183,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 514,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 413,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 413,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-artworks-390.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "faq",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 415,
+      "innerWidth": 390,
+      "scrollY": 12229,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 514,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 413,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 413,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-faq-390.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "order",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 415,
+      "innerWidth": 390,
+      "scrollY": 14779,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 514,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 413,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 413,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-order-390.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "home",
+    "width": 430,
+    "height": 932,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+        "bytes": 545348
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+        "bytes": 1999582
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+        "bytes": 1251989
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/avatar/rinnozuki-avatar.jpg",
+        "bytes": 28343
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+        "bytes": 426253
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+        "bytes": 984046
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 430,
+      "bodyScrollWidth": 453,
+      "innerWidth": 430,
+      "scrollY": 0,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 527,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 453,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 453,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-home-430.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "pricing",
+    "width": 430,
+    "height": 932,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 430,
+      "bodyScrollWidth": 453,
+      "innerWidth": 430,
+      "scrollY": 2722,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 527,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 453,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 453,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-pricing-430.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "artworks",
+    "width": 430,
+    "height": 932,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 430,
+      "bodyScrollWidth": 453,
+      "innerWidth": 430,
+      "scrollY": 5064,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 527,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 453,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 453,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-artworks-430.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "faq",
+    "width": 430,
+    "height": 932,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 430,
+      "bodyScrollWidth": 453,
+      "innerWidth": 430,
+      "scrollY": 7340,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 527,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 453,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 453,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-faq-430.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "order",
+    "width": 430,
+    "height": 932,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 430,
+      "bodyScrollWidth": 453,
+      "innerWidth": 430,
+      "scrollY": 14308,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute bottom-20 left-1/3 h-96 w-96 rounded-full bg-violet/10 blur-3xl",
+          "right": 527,
+          "width": 384
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-mint/18",
+          "right": 453,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 453,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 477,
+          "width": 161
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 460,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 640,
+          "width": 155
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 623,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-order-430.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "home",
+    "width": 768,
+    "height": 1024,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+        "bytes": 1251989
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/avatar/rinnozuki-avatar.jpg",
+        "bytes": 28343
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+        "bytes": 1999582
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+        "bytes": 545348
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+        "bytes": 984046
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+        "bytes": 426253
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "innerWidth": 768,
+      "scrollY": 0,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 791,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 794,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 925,
+          "width": 106
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 908,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1052,
+          "width": 119
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1035,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1144,
+          "width": 84
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-home-768.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "pricing",
+    "width": 768,
+    "height": 1024,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "innerWidth": 768,
+      "scrollY": 2208,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 791,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 794,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 925,
+          "width": 106
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 908,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1052,
+          "width": 119
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1035,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1144,
+          "width": 84
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-pricing-768.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "artworks",
+    "width": 768,
+    "height": 1024,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "innerWidth": 768,
+      "scrollY": 4778,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 791,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 794,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 925,
+          "width": 106
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 908,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1052,
+          "width": 119
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1035,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1144,
+          "width": 84
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-artworks-768.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "faq",
+    "width": 768,
+    "height": 1024,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "innerWidth": 768,
+      "scrollY": 7690,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 791,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 794,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 925,
+          "width": 106
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 908,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1052,
+          "width": 119
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1035,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1144,
+          "width": 84
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-faq-768.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "order",
+    "width": 768,
+    "height": 1024,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "innerWidth": 768,
+      "scrollY": 11566,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua Karya01 / Signature MoodPotret anime lembut dengan nuansa emosional dream",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 791,
+          "width": 144
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 811,
+          "width": 163
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 794,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 925,
+          "width": 106
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 908,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1052,
+          "width": 119
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1035,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1144,
+          "width": 84
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-order-768.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "home",
+    "width": 1024,
+    "height": 768,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+        "bytes": 1999582
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+        "bytes": 545348
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/avatar/rinnozuki-avatar.jpg",
+        "bytes": 28343
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+        "bytes": 1251989
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+        "bytes": 984046
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+        "bytes": 426253
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1024,
+      "bodyScrollWidth": 1048,
+      "innerWidth": 1024,
+      "scrollY": 0,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 1047,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1126,
+          "width": 520
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1052,
+          "width": 119
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1035,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1144,
+          "width": 84
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1127,
+          "width": 8
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1047,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1047,
+          "width": 112
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-home-1024.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "pricing",
+    "width": 1024,
+    "height": 768,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1024,
+      "bodyScrollWidth": 1048,
+      "innerWidth": 1024,
+      "scrollY": 1642,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 1047,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1126,
+          "width": 520
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1052,
+          "width": 119
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1035,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1144,
+          "width": 84
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1127,
+          "width": 8
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1047,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1047,
+          "width": 112
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-pricing-1024.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "artworks",
+    "width": 1024,
+    "height": 768,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1024,
+      "bodyScrollWidth": 1048,
+      "innerWidth": 1024,
+      "scrollY": 3659,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 1047,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1126,
+          "width": 520
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1052,
+          "width": 119
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1035,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1144,
+          "width": 84
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1127,
+          "width": 8
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1047,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1047,
+          "width": 112
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-artworks-1024.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "faq",
+    "width": 1024,
+    "height": 768,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 1024,
+      "bodyScrollWidth": 1048,
+      "innerWidth": 1024,
+      "scrollY": 4310,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story02 / Cute Chibi EnergyProporsi kecil, pesona besar,",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 1047,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1126,
+          "width": 520
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1052,
+          "width": 119
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1035,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1144,
+          "width": 84
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1127,
+          "width": 8
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1047,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1047,
+          "width": 112
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-faq-1024.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "order",
+    "width": 1024,
+    "height": 768,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 1024,
+      "bodyScrollWidth": 1048,
+      "innerWidth": 1024,
+      "scrollY": 8622,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story05 / Shadow & UtilityMood board yang membuktikan ra",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 1047,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1126,
+          "width": 520
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1052,
+          "width": 119
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1035,
+          "width": 8
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition border-whit",
+          "right": 1144,
+          "width": 84
+        },
+        {
+          "tag": "SPAN",
+          "cls": "opacity-60",
+          "right": 1127,
+          "width": 8
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1047,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1047,
+          "width": 112
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-order-1024.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "home",
+    "width": 1280,
+    "height": 800,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/avatar/rinnozuki-avatar.jpg",
+        "bytes": 28343
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+        "bytes": 1999582
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+        "bytes": 1251989
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+        "bytes": 545348
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+        "bytes": 984046
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+        "bytes": 426253
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1298,
+      "innerWidth": 1280,
+      "scrollY": 0,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 1303,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1408,
+          "width": 520
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-home-1280.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "pricing",
+    "width": 1280,
+    "height": 800,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1298,
+      "innerWidth": 1280,
+      "scrollY": 1209,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 1303,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1408,
+          "width": 520
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-pricing-1280.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "artworks",
+    "width": 1280,
+    "height": 800,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1298,
+      "innerWidth": 1280,
+      "scrollY": 3659,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 1303,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1408,
+          "width": 520
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-artworks-1280.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "faq",
+    "width": 1280,
+    "height": 800,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1298,
+      "innerWidth": 1280,
+      "scrollY": 4135,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story02 / Cute Chibi EnergyProporsi kecil, pesona besar,",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 1303,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1408,
+          "width": 520
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-faq-1280.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "order",
+    "width": 1280,
+    "height": 800,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1298,
+      "innerWidth": 1280,
+      "scrollY": 9010,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story05 / Shadow & UtilityMood board yang membuktikan ra",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl bg-rose/18",
+          "right": 1303,
+          "width": 144
+        },
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1408,
+          "width": 520
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        },
+        {
+          "tag": "DIV",
+          "cls": "pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl t",
+          "right": 1303,
+          "width": 112
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-order-1280.png",
+    "passOverflow": false
+  },
+  {
+    "site": "rinnoz",
+    "section": "home",
+    "width": 1440,
+    "height": 900,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/avatar/rinnozuki-avatar.jpg",
+        "bytes": 28343
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+        "bytes": 1999582
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+        "bytes": 545348
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+        "bytes": 1251989
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+        "bytes": 426253
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+        "bytes": 984046
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "innerWidth": 1440,
+      "scrollY": 0,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1584,
+          "width": 520
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-home-1440.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "pricing",
+    "width": 1440,
+    "height": 900,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "innerWidth": 1440,
+      "scrollY": 1106,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1584,
+          "width": 520
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-pricing-1440.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "artworks",
+    "width": 1440,
+    "height": 900,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "innerWidth": 1440,
+      "scrollY": 3339,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1584,
+          "width": 520
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-artworks-1440.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "faq",
+    "width": 1440,
+    "height": 900,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "innerWidth": 1440,
+      "scrollY": 4523,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story02 / Cute Chibi EnergyProporsi kecil, pesona besar,",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1584,
+          "width": 520
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-faq-1440.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "order",
+    "width": 1440,
+    "height": 900,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "innerWidth": 1440,
+      "scrollY": 9437,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story05 / Shadow & UtilityMood board yang membuktikan ra",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 1584,
+          "width": 520
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-order-1440.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "home",
+    "width": 1920,
+    "height": 1080,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2064794850671968291-1.jpg",
+        "bytes": 1999582
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/avatar/rinnozuki-avatar.jpg",
+        "bytes": 28343
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2024098733991039299-1.jpg",
+        "bytes": 545348
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2017652733084635532-1.jpg",
+        "bytes": 1251989
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1962047085425139989-1.jpg",
+        "bytes": 984046
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1949451538193416264-1.jpg",
+        "bytes": 426253
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1920,
+      "bodyScrollWidth": 1920,
+      "innerWidth": 1920,
+      "scrollY": 0,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 2112,
+          "width": 520
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-home-1920.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "pricing",
+    "width": 1920,
+    "height": 1080,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-2003998581175603589-1.jpg",
+        "bytes": 951463
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/social/x/x-1984891587219112059-1.jpg",
+        "bytes": 281448
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1920,
+      "bodyScrollWidth": 1920,
+      "innerWidth": 1920,
+      "scrollY": 1385,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 2112,
+          "width": 520
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-pricing-1920.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "artworks",
+    "width": 1920,
+    "height": 1080,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-02.jpg",
+        "bytes": 671743
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1920,
+      "bodyScrollWidth": 1920,
+      "innerWidth": 1920,
+      "scrollY": 3939,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story01 / Signature MoodPotret anime lembut dengan nuans",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 2112,
+          "width": 520
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-artworks-1920.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "faq",
+    "width": 1920,
+    "height": 1080,
+    "errors": [],
+    "images": [
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-05.jpg",
+        "bytes": 200218
+      },
+      {
+        "url": "https://rinnoz.vercel.app/rinnozuki/portfolio/artwork-01.jpg",
+        "bytes": 669273
+      }
+    ],
+    "m": {
+      "docScrollWidth": 1920,
+      "bodyScrollWidth": 1920,
+      "innerWidth": 1920,
+      "scrollY": 4529,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story02 / Cute Chibi EnergyProporsi kecil, pesona besar,",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 2112,
+          "width": 520
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-faq-1920.png",
+    "passOverflow": true
+  },
+  {
+    "site": "rinnoz",
+    "section": "order",
+    "width": 1920,
+    "height": 1080,
+    "errors": [],
+    "images": [],
+    "m": {
+      "docScrollWidth": 1920,
+      "bodyScrollWidth": 1920,
+      "innerWidth": 1920,
+      "scrollY": 9808,
+      "storyText": "Social art feedKarya / Portofolio TerpilihKarya sosial RinnOZ yang dikurasi menjadi cerita visual: dari mood anime lembut, chibi, maskot, scene illustration, sampai emote/sticker.Sumber utama7 karya XKurasi10 item tampilInstagramInstagram CTA sajaMulai Scroll StoryLihat Semua KaryaReal scroll story05 / Shadow & UtilityMood board yang membuktikan ra",
+      "wide": [
+        {
+          "tag": "DIV",
+          "cls": "absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/1",
+          "right": 2112,
+          "width": 520
+        }
+      ]
+    },
+    "screenshot": "qa/audit-before/rinnoz-order-1920.png",
+    "passOverflow": true
+  }
+]

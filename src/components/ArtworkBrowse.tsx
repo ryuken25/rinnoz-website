@@ -34,7 +34,7 @@ export function ArtworkBrowse({
         </div>
         <p className="hidden text-sm text-cream/55 md:block">{t('artworks.browseCount', { count: visible.length })}</p>
       </div>
-      <div className="sticky top-24 z-10 -mx-1 flex gap-2 overflow-x-auto px-1 pb-3 no-scrollbar">
+      <div className="sticky top-24 z-10 -mx-1 flex max-w-full flex-wrap gap-2 overflow-hidden px-1 pb-3" aria-label="Artwork filters">
         {artworkFilters.map((f) => (
           <button
             key={f}

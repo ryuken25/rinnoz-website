@@ -190,7 +190,7 @@ function ArtworkStoryDesktop({
         {/* decorative only — clip this layer, not sticky parent */}
         <div className="pointer-events-none absolute inset-x-0 -top-24 bottom-0 -z-10 overflow-hidden">
           <div className="absolute left-1/2 top-1/3 h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-pink-300/10 blur-[120px]" />
-          <div className="absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-violet-400/10 blur-[120px]" />
+          <div className="absolute right-0 top-[10%] h-[520px] w-[min(40vw,520px)] rounded-full bg-violet-400/10 blur-[120px]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(255,158,216,.12),transparent_28%),radial-gradient(circle_at_20%_70%,rgba(216,198,255,.1),transparent_34%)]" />
         </div>
 
@@ -312,47 +312,30 @@ function ArtworkStoryMobile({
   onSelect: (id: string) => void;
   chapterMeta: { kicker: string; title: string; body: string; tags: string[] }[];
 }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartRef = useRef<number | null>(null);
+  const go = (index: number) => setActiveIndex(Math.max(0, Math.min(chapters.length - 1, index)));
   return (
-    <section
-      id="artworks-story-stage"
-      className="space-y-5 scroll-mt-[calc(var(--nav-height)+4px)] px-4 lg:hidden"
-      aria-labelledby="artworks-story-title"
-    >
-      {chapters.map((item, i) => (
-        <motion.button
-          type="button"
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          key={item.id}
-          onClick={() => onSelect(item.id)}
-          className="card w-full overflow-hidden p-3 text-left"
-        >
+    <section id="artworks-story-stage" className="scroll-mt-[calc(var(--nav-height)+4px)] px-4 lg:hidden" aria-labelledby="artworks-story-title">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <div><p className="eyebrow">Scroll Story</p><p className="text-sm font-black text-lavender">0{activeIndex + 1} / 0{chapters.length}</p></div>
+        <div className="flex gap-2">
+          <button type="button" className="btn btn-ghost !min-h-11 !min-w-11 !p-2" aria-label="Previous story beat" onClick={() => go(activeIndex - 1)} disabled={activeIndex === 0}>←</button>
+          <button type="button" className="btn btn-ghost !min-h-11 !min-w-11 !p-2" aria-label="Next story beat" onClick={() => go(activeIndex + 1)} disabled={activeIndex === chapters.length - 1}>→</button>
+        </div>
+      </div>
+      <article
+        className="card overflow-hidden p-3"
+        onTouchStart={(e) => { touchStartRef.current = e.touches[0]?.clientX ?? null; }}
+        onTouchEnd={(e) => { const start = touchStartRef.current; if (start === null) return; const dx = (e.changedTouches[0]?.clientX ?? start) - start; if (Math.abs(dx) > 40) go(activeIndex + (dx < 0 ? 1 : -1)); touchStartRef.current = null; }}
+      >
+        <button type="button" onClick={() => onSelect(chapters[activeIndex].id)} className="block w-full text-left">
           <div className="rounded-[1.5rem] bg-ink/38 p-2">
-            <Image
-              src={item.imageUrl}
-              alt={item.title}
-              width={item.width}
-              height={item.height}
-              sizes="(max-width:640px) 92vw, (max-width:1024px) 70vw, 48vw"
-              className="h-auto max-h-[48svh] w-full rounded-[1.25rem] object-contain"
-              priority={i === 0}
-            />
+            <Image src={chapters[activeIndex].imageUrl} alt={chapters[activeIndex].title} width={chapters[activeIndex].width} height={chapters[activeIndex].height} sizes="(max-width:640px) calc(100vw - 2rem), 70vw" className="h-auto max-h-[48svh] w-full rounded-[1.25rem] object-contain" priority={activeIndex === 0} />
           </div>
-          <div className="p-3">
-            <p className="text-[.72rem] font-black uppercase tracking-[.14em] text-blush">{chapterMeta[i]?.kicker}</p>
-            <h3 className="mt-2 font-display text-[clamp(1.45rem,7vw,2.15rem)] leading-[1.05] tracking-[-.035em]">{chapterMeta[i]?.title}</h3>
-            <p className="mt-2 text-[.92rem] leading-[1.55] text-cream/65">{chapterMeta[i]?.body}</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {(chapterMeta[i]?.tags || []).map((tag) => (
-                <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[.7rem] font-bold">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.button>
-      ))}
+          <div className="p-3"><p className="text-[.72rem] font-black uppercase tracking-[.14em] text-blush">{chapterMeta[activeIndex]?.kicker}</p><h3 className="mt-2 font-display text-[clamp(1.45rem,7vw,2.15rem)] leading-[1.05] tracking-[-.035em]">{chapterMeta[activeIndex]?.title}</h3><p className="mt-2 text-[.92rem] leading-[1.55] text-cream/65">{chapterMeta[activeIndex]?.body}</p><div className="mt-3 flex flex-wrap gap-2">{(chapterMeta[activeIndex]?.tags || []).map((tag) => <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[.7rem] font-bold">{tag}</span>)}</div></div>
+        </button>
+      </article>
     </section>
   );
 }

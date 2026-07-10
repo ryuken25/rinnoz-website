@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { buildMailtoUrl, buildOrderEmailBody, buildOrderSubject, getOrderEmailTo } from '@/lib/mailto';
+import { createCmsOrder } from '@/lib/cms-orders';
 import { ALLOWED_TYPES, MAX_FILE_SIZE, MAX_FILES, validateOrder, validateOrderFiles } from '@/lib/orderValidation';
 import type { OrderForm, PreferredContact } from '@/types/order';
 
@@ -187,6 +188,8 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const cmsResult = await createCmsOrder({ ...form, contact: form.contactLink, brief: form.characterDescription || form.notes || form.lore, package_slug: `${form.commissionStyle}-${form.type}`, source: form.source });
+
   const to = process.env.ORDER_EMAIL_TO || getOrderEmailTo();
   const from = process.env.ORDER_EMAIL_FROM || process.env.SMTP_FROM || 'commissions@rinnoz.vercel.app';
   const subject = subjectOverride || buildOrderSubject(form, form.language);
@@ -202,6 +205,7 @@ export async function POST(req: NextRequest) {
       reason: 'Email provider is not configured. Your email app will open with the order summary. Please attach your uploaded reference files manually before sending.',
       mailtoUrl,
       summary: text,
+      order: cmsResult.ok ? { persisted: cmsResult.persisted, publicId: cmsResult.order?.public_id || cmsResult.publicId || '' } : { persisted: false },
     });
   }
 
@@ -211,7 +215,7 @@ export async function POST(req: NextRequest) {
     } else {
       await sendWithSmtp({ from, to, subject, text, replyTo, files });
     }
-    return NextResponse.json({ ok: true, summary: text });
+    return NextResponse.json({ ok: true, summary: text, order: cmsResult.ok ? { persisted: cmsResult.persisted, publicId: cmsResult.order?.public_id || cmsResult.publicId || '' } : { persisted: false } });
   } catch (e) {
     const error = e instanceof Error ? e.message : 'Send failed';
     return NextResponse.json(

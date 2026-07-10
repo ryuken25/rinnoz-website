@@ -38,7 +38,7 @@ export function FaqSection() {
                 }`}
               >
                 <div
-                  className={`pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full blur-3xl transition ${
+                  className={`pointer-events-none absolute right-0 top-0 h-28 w-28 rounded-full blur-3xl transition ${
                     isOpen ? 'bg-blush/25' : 'bg-lavender/0 group-hover:bg-lavender/18'
                   }`}
                 />

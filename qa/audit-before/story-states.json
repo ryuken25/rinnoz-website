@@ -1,0 +1,137 @@
+[
+  {
+    "site": "rinnoz",
+    "state": "story-start",
+    "w": 320,
+    "h": 700,
+    "m": {
+      "doc": 320,
+      "body": 345,
+      "iw": 320,
+      "y": 3516,
+      "text": []
+    },
+    "errors": [],
+    "screenshot": "qa/audit-before/rinnoz-story-start-320.png"
+  },
+  {
+    "site": "rinnoz",
+    "state": "story-middle",
+    "w": 320,
+    "h": 700,
+    "m": {
+      "doc": 320,
+      "body": 345,
+      "iw": 320,
+      "y": 3958,
+      "text": []
+    },
+    "errors": [],
+    "screenshot": "qa/audit-before/rinnoz-story-middle-320.png"
+  },
+  {
+    "site": "rinnoz",
+    "state": "story-end",
+    "w": 320,
+    "h": 700,
+    "m": {
+      "doc": 320,
+      "body": 345,
+      "iw": 320,
+      "y": 4079,
+      "text": []
+    },
+    "errors": [],
+    "screenshot": "qa/audit-before/rinnoz-story-end-320.png"
+  },
+  {
+    "site": "rinnoz",
+    "state": "story-start",
+    "w": 390,
+    "h": 844,
+    "m": {
+      "doc": 390,
+      "body": 415,
+      "iw": 390,
+      "y": 3963,
+      "text": []
+    },
+    "errors": [],
+    "screenshot": "qa/audit-before/rinnoz-story-start-390.png"
+  },
+  {
+    "site": "rinnoz",
+    "state": "story-middle",
+    "w": 390,
+    "h": 844,
+    "m": {
+      "doc": 390,
+      "body": 415,
+      "iw": 390,
+      "y": 3054,
+      "text": []
+    },
+    "errors": [],
+    "screenshot": "qa/audit-before/rinnoz-story-middle-390.png"
+  },
+  {
+    "site": "rinnoz",
+    "state": "story-end",
+    "w": 390,
+    "h": 844,
+    "m": {
+      "doc": 390,
+      "body": 415,
+      "iw": 390,
+      "y": 3381,
+      "text": []
+    },
+    "errors": [],
+    "screenshot": "qa/audit-before/rinnoz-story-end-390.png"
+  },
+  {
+    "site": "rinnoz",
+    "state": "story-start",
+    "w": 768,
+    "h": 1024,
+    "m": {
+      "doc": 768,
+      "body": 768,
+      "iw": 768,
+      "y": 1637,
+      "text": []
+    },
+    "errors": [],
+    "screenshot": "qa/audit-before/rinnoz-story-start-768.png"
+  },
+  {
+    "site": "rinnoz",
+    "state": "story-middle",
+    "w": 768,
+    "h": 1024,
+    "m": {
+      "doc": 768,
+      "body": 768,
+      "iw": 768,
+      "y": 1637,
+      "text": []
+    },
+    "errors": [],
+    "screenshot": "qa/audit-before/rinnoz-story-middle-768.png"
+  },
+  {
+    "site": "rinnoz",
+    "state": "story-end",
+    "w": 768,
+    "h": 1024,
+    "m": {
+      "doc": 768,
+      "body": 768,
+      "iw": 768,
+      "y": 3754,
+      "text": []
+    },
+    "errors": [],
+    "screenshot": "qa/audit-before/rinnoz-story-end-768.png"
+  }
+]

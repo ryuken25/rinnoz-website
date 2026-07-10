@@ -66,9 +66,9 @@ export function Hero() {
           animate={{ y: [0, -8, 0] }}
           transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut' }}
         >
-          <div className="moon-orb absolute -right-6 -top-8 scale-90 opacity-70" />
+          <div className="moon-orb absolute right-0 top-0 hidden opacity-70" />
           {minis[0] && (
-            <div className="absolute -left-4 top-10 max-w-[180px] rotate-[-8deg] rounded-3xl border border-white/15 bg-white/8 p-1.5 shadow-glow backdrop-blur-xl md:max-w-[220px] lg:max-w-[240px]">
+            <div className="absolute left-0 top-10 max-w-[180px] rotate-[-8deg] rounded-3xl border border-white/15 bg-white/8 p-1.5 shadow-glow backdrop-blur-xl md:max-w-[220px] lg:max-w-[240px]">
               <Image
                 src={minis[0].imageUrl}
                 alt={minis[0].title}
